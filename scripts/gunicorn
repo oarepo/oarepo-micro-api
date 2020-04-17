@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2020 CESNET.
+#
+# OARepo Micro API is free software; you can redistribute it and/or modify it
+# under the terms of the MIT License; see LICENSE file for more details.
+
+gunicorn -c ./docker/gunicorn/config.py --certfile=./docker/nginx/test.crt --keyfile=./docker/nginx/test.key -w 2 -b 127.0.0.1:5000 invenio_app.wsgi_rest

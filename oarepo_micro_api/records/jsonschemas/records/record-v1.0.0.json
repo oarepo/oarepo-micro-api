@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://repozitar.cesnet.cz/schemas/records/record-v1.0.0.json",
+  "additionalProperties": true,
+  "title": "CESNET OA Repository Demo Record v1.0.0",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "../dcterms-v1.0.0.json#/definitions/DCObject"
+    },
+    {
+      "$ref": "../invenio-v1.0.0.json#/definitions/InvenioRecord"
+    }
+  ],
+  "required": [
+    "$schema",
+    "id",
+    "title"
+  ]
+}

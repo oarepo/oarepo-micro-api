@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2020 CESNET.
+#
+# OARepo Micro API is free software; you can redistribute it and/or modify it
+# under the terms of the MIT License; see LICENSE file for more details.
+
+set -e
+
+pip-compile -U -o .requirements.txt requirements.in
+pip install -r .requirements.txt
+
+# Get rid of UI stuff installed as invenio deps as we don't need those here...
+pip uninstall -y invenio-theme
