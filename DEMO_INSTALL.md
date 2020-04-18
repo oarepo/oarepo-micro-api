@@ -44,3 +44,39 @@ invenio files location --default 'default-location' ${INSTANCE_DIR}/data
 
 invenio demo data
 ```
+
+## Debug run
+
+
+```bash
+export FLASK_DEBUG=true
+export SERVER_NAME=127.0.0.1:5000
+export FLASK_APP=oarepo_micro_api.wsgi:application
+invenio run
+```
+
+An check in browser that all links point to ```/api/```:
+
+```json5
+// http://127.0.0.1:5000/api/records/
+{
+   aggregations: { },
+   hits: {
+      // a lot of stuff here
+   },
+   links: {
+      next: "http://127.0.0.1:5000/api/records/?size=10&page=2",
+      self: "http://127.0.0.1:5000/api/records/?size=10&page=1"
+   }
+}
+```
+
+## UWSGI run
+
+```bash
+
+uwsgi --ini uwsgi.ini -H $VIRTUAL_ENV
+
+```
+
+Make the same request and check that URLs stay the same.

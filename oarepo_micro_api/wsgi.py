@@ -1,10 +1,8 @@
-from threading import Lock
-
-from flask import Flask
 from invenio_app.factory import create_api
 
 # APPLICATION_ROOT='/api' has to be set for this to work !
-from invenio_base.wsgi import wsgi_proxyfix
+
+print('Application loading ...')
 
 
 class PrefixMiddleware(object):
@@ -17,7 +15,6 @@ class PrefixMiddleware(object):
         if path_info.startswith('/api'):
             script = '/api'
             path_info = path_info[4:]
-        print(application.config.get('SEARCH_ELASTIC_HOSTS'))
         original_script_name = environ.get("SCRIPT_NAME", "")
         environ["SCRIPT_NAME"] = original_script_name + script
         environ["PATH_INFO"] = path_info
