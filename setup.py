@@ -52,6 +52,13 @@ setup(
         'invenio_i18n.translations': [
             'messages = oarepo_micro_api',
         ],
+        'invenio_jsonschemas.schemas': [
+            'records = oarepo_micro_api.records.jsonschemas'
+        ],
+        'invenio_search.mappings': [
+            'records = oarepo_micro_api.records.mappings',
+        ],
+
     },
     classifiers=[
         'Environment :: Web Environment',
