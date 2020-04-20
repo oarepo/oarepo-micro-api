@@ -9,15 +9,3 @@
 set -e
 
 oarepo setup
-# Clean redis
-#pipenv run invenio shell --no-term-title -c "import redis; redis.StrictRedis.from_url(app.config['CACHE_REDIS_URL']).flushall(); print('Cache cleared')"
-#invenio db destroy --yes-i-know
-#invenio db init create
-#invenio index destroy --force --yes-i-know
-#invenio index init --force
-#invenio index queue init purge
-##pipenv run invenio files location --default 'default-location'  $(pipenv run invenio shell --no-term-title -c "print(app.instance_path)")'/data'
-#
-## Create admin role to restrict access
-#invenio roles create admin
-#invenio access allow superuser-access role admin
