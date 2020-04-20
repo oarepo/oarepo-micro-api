@@ -20,6 +20,10 @@
 #
 version: '2.3'
 services:
+  cache:
+    extends:
+      file: docker-services.yml
+      service: cache
   es:
     extends:
       file: docker-services.yml

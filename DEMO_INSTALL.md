@@ -1,61 +1,47 @@
-# DEMO local Installation
+# Local development
 
+Install the dependencies:
 ```bash
 git clone git@github.com:oarepo/oarepo-micro-api.git
+mkvirtualenv --python=/usr/bin/python3 oarepo-micro-api
 
-pipenv install
-pipenv shell
-pip install -e .
-
-INSTANCE_DIR=$VIRTUAL_ENV/var/instance
+./scripts/bootstrap
 ```
 
-## Docker
-
-## No docker
-
-In case your elasticsearch / database is not in docker
-
+In case your db is not in docker, create the following user and database:
 ```bash
-
 sudo -u postgres createuser oarepo-micro-api -P -l
 sudo -u postgres createdb oarepo-micro-api -O oarepo-micro-api
-
-
-mkdir -p $INSTANCE_DIR
-cat >${INSTANCE_DIR}/invenio.cfg <<'EOF'
-SEARCH_ELASTIC_HOSTS = [
-    dict(host='127.0.0.1', port=9207),
-]
-
-SQLALCHEMY_DATABASE_URI = \
-    'postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@localhost:5433/oarepo-micro-api'
-EOF
 ```
 
-## Initialization and demo data
-
+Otherwise, run the minimal infrastructure in docker:
 ```bash
-invenio index init
-invenio db create
-
-mkdir -p ${INSTANCE_DIR}/data
-invenio files location --default 'default-location' ${INSTANCE_DIR}/data
-
-invenio demo data
+docker-compose -f docker-compose.min.yml up -d
 ```
 
-## Debug run
-
-
+Setup the Invenio instance. This will create all the DB tables and ES mappings and fill
+database with demo data:
 ```bash
-export FLASK_DEBUG=true
-export SERVER_NAME=127.0.0.1:5000
-export FLASK_APP=oarepo_micro_api.wsgi:application
-invenio run
+./scripts/setup
 ```
 
-An check in browser that all links point to ```/api/```:
+Run the invenio server:
+```bash
+# Run in invenio built-in server
+./scripts/server
+
+# --or--
+
+# Run in uwsgi
+./scripts/uwsgi
+```
+
+Test it out:
+```bash
+curl http://localhost:5000/api/records/ | jq
+```
+
+See that all record links are prefixed with ```/api/```:
 
 ```json5
 // http://127.0.0.1:5000/api/records/
@@ -71,12 +57,24 @@ An check in browser that all links point to ```/api/```:
 }
 ```
 
-## UWSGI run
+## Docker development
 
+Build the API images:
 ```bash
-
-uwsgi --ini uwsgi.ini -H $VIRTUAL_ENV
-
+./docker/build-images.sh
 ```
 
-Make the same request and check that URLs stay the same.
+Spawn the full stack API deployment
+```bash
+docker-compose -f docker-compose.full.yml up -d
+```
+
+Run the API instance setup:
+```bash
+./scripts/setup
+```
+
+Test it out. Now the service will be exposed on https (443):
+```bash
+curl -k https://localhost/api/records/ | jq
+```

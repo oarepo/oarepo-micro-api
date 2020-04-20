@@ -50,33 +50,34 @@ services:
     volumes:
       - static_data:/opt/invenio/var/instance/static:ro
     links:
-      - web-ui
+#      - web-ui
       - web-api
   # UI Application
-  web-ui:
-    extends:
-      file: docker-services.yml
-      service: app
-    command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
-    image: oarepo-micro-api
-    ports:
-      - "5000"
-    volumes:
-      - static_data:/opt/invenio/var/instance/static
-      - uploaded_data:/opt/invenio/var/instance/data
-      - archived_data:/opt/invenio/var/instance/archive
-    links:
-      - cache
-      - es
-      - mq
-      - db
+# TODO: this will be quasar app
+#  web-ui:
+#    extends:
+#      file: docker-services.yml
+#      service: app
+#    command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
+#    image: oarepo-micro-api
+#    ports:
+#      - "5000"
+#    volumes:
+#      - static_data:/opt/invenio/var/instance/static
+#      - uploaded_data:/opt/invenio/var/instance/data
+#      - archived_data:/opt/invenio/var/instance/archive
+#    links:
+#      - cache
+#      - es
+#      - mq
+#      - db
   # API Rest Application
   web-api:
     extends:
       file: docker-services.yml
       service: app
-    command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
-    image: oarepo-micro-api
+    command: ["uwsgi ./docker/uwsgi/uwsgi_http_custom.ini"]
+    image: oarepo-api
     ports:
       - "5000"
     volumes:
@@ -85,32 +86,34 @@ services:
     links:
       - cache
       - es
-      - mq
+# TODO: TBD
+#      - mq
       - db
   # Worker
-  worker:
-    extends:
-      file: docker-services.yml
-      service: app
-    restart: "always"
-    command: ["celery worker -A invenio_app.celery --loglevel=INFO"]
-    image: oarepo-micro-api
-    links:
-      - cache
-      - es
-      - mq
-      - db
-    volumes:
-      - uploaded_data:/opt/invenio/var/instance/data
-      - archived_data:/opt/invenio/var/instance/archive
+# TODO: TBD
+#  worker:
+#    extends:
+#      file: docker-services.yml
+#      service: app
+#    restart: "always"
+#    command: ["celery worker -A invenio_app.celery --loglevel=INFO"]
+#    image: oarepo-micro-api
+#    links:
+#      - cache
+#      - es
+#      - mq
+#      - db
+#    volumes:
+#      - uploaded_data:/opt/invenio/var/instance/data
+#      - archived_data:/opt/invenio/var/instance/archive
   # Monitoring of Celery
   # http://127.0.0.1:5555
-  flower:
-    extends:
-      file: docker-services.yml
-      service: flower
-    links:
-      - mq
+#  flower:
+#    extends:
+#      file: docker-services.yml
+#      service: flower
+#    links:
+#      - mq
   # Inspect Elasticsearch indexes
   # http://127.0.0.1:5601
   kibana:
@@ -129,10 +132,11 @@ services:
       file: docker-services.yml
       service: db
   # http://guest:guest@127.0.0.1:15672
-  mq:
-    extends:
-      file: docker-services.yml
-      service: mq
+#  mq:
+# TODO: TBD
+#    extends:
+#      file: docker-services.yml
+#      service: mq
   es:
     extends:
       file: docker-services.yml

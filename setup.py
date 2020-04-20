@@ -58,7 +58,6 @@ setup(
         'invenio_search.mappings': [
             'records = oarepo_micro_api.records.mappings',
         ],
-
     },
     classifiers=[
         'Environment :: Web Environment',

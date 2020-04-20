@@ -18,7 +18,8 @@ from __future__ import absolute_import, print_function
 from datetime import timedelta
 
 from invenio_app.config import APP_DEFAULT_SECURE_HEADERS
-from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
+# TODO: enable for iiif previews
+#from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
 
 
 def _(x):
@@ -29,9 +30,8 @@ def _(x):
 # Rate limiting
 # =============
 #: Storage for ratelimiter.
-# TODO: add redis and enable
-# RATELIMIT_STORAGE_URL = 'redis://localhost:6379/3'
-RATELIMIT_ENABLED = False
+RATELIMIT_STORAGE_URL = 'redis://localhost:6379/3'
+RATELIMIT_ENABLED = True
 
 # I18N
 # ====
@@ -61,8 +61,7 @@ SECURITY_EMAIL_SENDER = SUPPORT_EMAIL
 SECURITY_EMAIL_SUBJECT_REGISTER = _(
     "Welcome to OARepo")
 #: Redis session storage URL.
-# TODO: add redis
-# ACCOUNTS_SESSION_REDIS_URL = 'redis://localhost:6379/1'
+ACCOUNTS_SESSION_REDIS_URL = 'redis://localhost:6379/1'
 #: Enable session/user id request tracing. This feature will add X-Session-ID
 #: and X-User-ID headers to HTTP response. You MUST ensure that NGINX (or other
 #: proxies) removes these headers again before sending the response to the
@@ -124,8 +123,9 @@ OAISERVER_ID_PREFIX = 'oai:repozitar.cesnet.cz:'
 
 # Previewers
 # ==========
+#TODO: enable for previews
 #: Include IIIF preview for images.
-PREVIEWER_PREFERENCE = ['iiif_image'] + BASE_PREFERENCE
+#PREVIEWER_PREFERENCE = ['iiif_image'] + BASE_PREFERENCE
 
 # Debug
 # =====
@@ -138,10 +138,11 @@ DEBUG_TB_INTERCEPT_REDIRECTS = False
 
 # Configures Content Security Policy for PDF Previewer
 # Remove it if you are not using PDF Previewer
-APP_DEFAULT_SECURE_HEADERS['content_security_policy'] = {
-    'default-src': ["'self'", "'unsafe-inline'"],
-    'object-src': ["'none'"],
-    'style-src': ["'self'", "'unsafe-inline'"],
-    'font-src': ["'self'", "data:", "https://fonts.gstatic.com",
-                 "https://fonts.googleapis.com"],
-}
+# TODO: enable for previews
+# APP_DEFAULT_SECURE_HEADERS['content_security_policy'] = {
+#     'default-src': ["'self'", "'unsafe-inline'"],
+#     'object-src': ["'none'"],
+#     'style-src': ["'self'", "'unsafe-inline'"],
+#     'font-src': ["'self'", "data:", "https://fonts.gstatic.com",
+#                  "https://fonts.googleapis.com"],
+# }
