@@ -8,4 +8,6 @@
 
 set -e
 
-oarepo setup
+ADMIN_PASSWORD=${OAREPO_ADMIN_PASSWORD:-OARepoAdm1n}
+
+oarepo setup "$ADMIN_PASSWORD"
