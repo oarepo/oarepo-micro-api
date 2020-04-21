@@ -12,6 +12,7 @@ from uuid import uuid4
 import click
 import lorem
 import names
+import redis
 from flask.cli import with_appcontext
 from invenio_accounts.models import User
 from invenio_db import db
@@ -144,6 +145,7 @@ def data(n_items):
 
 
 @click.command()
+@click.argument('admin_password')
 @click.option("--recreate-db", is_flag=True, help="Recreating DB.")
 @click.option(
     "--skip-demo-data", is_flag=True, help="Skip creating demo data."
@@ -155,19 +157,18 @@ def data(n_items):
 )
 @click.option("--verbose", is_flag=True, help="Verbose output.")
 @with_appcontext
-def setup(recreate_db, skip_demo_data, skip_file_location, verbose):
-    """ILS setup command."""
+def setup(admin_password, recreate_db, skip_demo_data, skip_file_location, verbose):
+    """OARepo setup command."""
     from flask import current_app
     from invenio_base.app import create_cli
 
     click.secho("oarepo setup started...", fg="blue")
 
     # Clean redis
-    # TODO: add redis support
-    # redis.StrictRedis.from_url(
-    #     current_app.config["CACHE_REDIS_URL"]
-    # ).flushall()
-    # click.secho("redis cache cleared...", fg="red")
+    redis.StrictRedis.from_url(
+        current_app.config["CACHE_REDIS_URL"]
+    ).flushall()
+    click.secho("redis cache cleared...", fg="red")
 
     cli = create_cli()
     runner = current_app.test_cli_runner()
@@ -194,7 +195,7 @@ def setup(recreate_db, skip_demo_data, skip_file_location, verbose):
 
     # Create users
     run_command(
-        "users create admin@oarepo.org -a --password=OARep0Adm1n"
+        "users create admin@oarepo.org -a --password={}".format(admin_password)
     )  # ID 1
     create_userprofile_for("admin@oarepo.org", "admin", "OArepo Administrator")
 

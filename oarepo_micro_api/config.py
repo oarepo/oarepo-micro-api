@@ -68,6 +68,18 @@ ACCOUNTS_SESSION_REDIS_URL = 'redis://localhost:6379/1'
 #: client. Set to False, in case of doubt.
 ACCOUNTS_USERINFO_HEADERS = True
 
+# Elasticsearch
+# =============
+import os
+ES_USER = os.getenv('OAREPO_ES_USER', None)
+ES_PASSWORD = os.getenv('OAREPO_ES_PASSWORD', None)
+ES_PARAMS = {}
+
+if ES_USER and ES_PASSWORD:
+    ES_PARAMS = dict(http_auth=(ES_USER, ES_PASSWORD))
+
+SEARCH_ELASTIC_HOSTS = [dict(host=h, **ES_PARAMS) for h in os.getenv('OAREPO_SEARCH_ELASTIC_HOSTS', 'localhost').split(',')]
+
 # Celery configuration
 # ====================
 # TODO: add celery
@@ -115,7 +127,7 @@ SESSION_COOKIE_SECURE = True
 #: provided, the allowed hosts variable is set to localhost. In production it
 #: should be set to the correct host and it is strongly recommended to only
 #: route correct hosts to the application.
-APP_ALLOWED_HOSTS = ['repozitar.cesnet.cz', 'localhost', '127.0.0.1']
+APP_ALLOWED_HOSTS = [h for h in os.getenv('OAREPO_APP_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')]
 
 # OAI-PMH
 # =======
