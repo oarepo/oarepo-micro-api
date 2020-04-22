@@ -8,8 +8,9 @@
 
 
 export FLASK_DEBUG=true
+export FLASK_ENV=deveopment
 export SERVER_NAME=127.0.0.1:5000
-export FLASK_APP=oarepo_micro_api.wsgi:application
+#export FLASK_APP=oarepo_micro_api.wsgi:application
 export INVENIO_USER=$(id -u)
 
-uwsgi --ini ./docker/uwsgi/uwsgi_http_custom.ini -H $VIRTUAL_ENV
+uwsgi --ini ./docker/uwsgi/uwsgi_http_custom.ini

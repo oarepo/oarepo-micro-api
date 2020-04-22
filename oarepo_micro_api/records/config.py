@@ -9,10 +9,11 @@
 
 from __future__ import absolute_import, print_function
 
+from elasticsearch_dsl import Q
 from invenio_indexer.api import RecordIndexer
 from invenio_records_rest.facets import terms_filter
+from invenio_records_rest.query import default_search_factory
 from invenio_records_rest.utils import allow_all, check_elasticsearch
-from invenio_search import RecordsSearch
 
 from oarepo_micro_api.records.api import Record
 
@@ -21,6 +22,45 @@ def _(x):
     """Identity function for string extraction."""
     return x
 
+
+def nested_filter(prefix, field, field_query=None, nested_query='terms'):
+    """Create a term filter.
+    :param prefix: Field path prefix
+    :param field: Field name.
+    :param field_query Field query function
+    :param nested_query Nested query name
+    :returns: Function that returns the Terms query.
+    """
+    field = prefix + '.' + field
+
+    def inner(values):
+        if field_query:
+            query = field_query(field)(values)
+        else:
+            query = Q(nested_query, **{field: values})
+        return Q('nested', path=prefix, query=query)
+
+    return inner
+
+
+def language_aware_match_filter(field):
+    return nested_filter(field, 'value', nested_query='match')
+
+
+def search_title(qstr=None):
+    if qstr:
+        return language_aware_match_filter('title')(qstr)
+    return Q()
+
+
+def search_factory(*args, **kwargs):
+    return default_search_factory(*args, query_parser=search_title, **kwargs)
+
+
+FILTERS = {
+    'title': language_aware_match_filter('title'),
+}
+
 RECORDS_REST_ENDPOINTS = {
     'recid': dict(
         pid_type='recid',
@@ -28,8 +68,8 @@ RECORDS_REST_ENDPOINTS = {
         pid_fetcher='recid',
         default_endpoint_prefix=True,
         record_class=Record,
-        search_class=RecordsSearch,
         indexer_class=RecordIndexer,
+        search_factory_imp=search_factory,
         search_index='records-record-v1.0.0',
         search_type=None,
         record_serializers={
@@ -62,6 +102,26 @@ RECORDS_REST_ENDPOINTS = {
 }
 """REST API for oarepo_micro_api."""
 
+INVENIO_OAREPO_UI_COLLECTIONS = {
+    "records": {
+        "title": {
+            "cs-cz": "Ukázkové záznamy v repozitáři",
+            "en-us": "Demo Repository Records"
+        },
+        "description": {
+            "cs-cz": """
+                Kolekce ukázkových záznamů odpovídajících DCObject metadatovému schematu.
+                """,
+            "en-us": """
+                A collection of a Demo Records that adhere to the DCObject metadata schema.
+                """
+        },
+        "rest": "/api/records/",
+        "facet_filters": list(FILTERS.keys())
+    }
+}
+""" OARepo UI collections API configuration. """
+
 RECORDS_UI_ENDPOINTS = dict(
     recid=dict(
         pid_type='recid',
@@ -89,7 +149,6 @@ PIDSTORE_RECID_FIELD = 'pid'
 OAREPO_API_ENDPOINTS_ENABLED = True
 """Enable/disable automatic endpoint registration."""
 
-
 RECORDS_REST_FACETS = dict(
     records=dict(
         aggs=dict(
@@ -103,7 +162,6 @@ RECORDS_REST_FACETS = dict(
     )
 )
 """Introduce searching facets."""
-
 
 RECORDS_REST_SORT_OPTIONS = dict(
     records=dict(
@@ -122,7 +180,6 @@ RECORDS_REST_SORT_OPTIONS = dict(
     )
 )
 """Setup sorting options."""
-
 
 RECORDS_REST_DEFAULT_SORT = dict(
     records=dict(
