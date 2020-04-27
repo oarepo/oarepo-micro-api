@@ -39,6 +39,8 @@ class OARepoMicroAPI(object):
         for k in dir(config):
             if k.startswith('OAREPO_API_'):
                 app.config.setdefault(k, getattr(config, k))
+            elif k == 'INVENIO_OAREPO_UI_COLLECTIONS':
+                app.config['INVENIO_OAREPO_UI_COLLECTIONS'] = getattr(config, k)
             elif k == 'PIDSTORE_RECID_FIELD':
                 app.config['PIDSTORE_RECID_FIELD'] = getattr(config, k)
             elif k == 'FILES_REST_PERMISSION_FACTORY':
