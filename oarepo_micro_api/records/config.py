@@ -59,6 +59,8 @@ def search_factory(*args, **kwargs):
 
 FILTERS = {
     'title': language_aware_match_filter('title'),
+    'creator': terms_filter('creator.keyword'),
+    'lang': terms_filter('title.lang.keyword')
 }
 
 RECORDS_REST_ENDPOINTS = {
@@ -149,16 +151,25 @@ PIDSTORE_RECID_FIELD = 'pid'
 OAREPO_API_ENDPOINTS_ENABLED = True
 """Enable/disable automatic endpoint registration."""
 
+
+def term_facet(field, order='desc', size=100):
+    return {
+        'terms': {
+            'field': field,
+            'size': size,
+            "order": {"_key": order}
+        },
+    }
+
+
 RECORDS_REST_FACETS = dict(
     records=dict(
-        aggs=dict(
-            type=dict(terms=dict(field='type')),
-            keywords=dict(terms=dict(field='keywords'))
-        ),
-        post_filters=dict(
-            type=terms_filter('type'),
-            keywords=terms_filter('keywords'),
-        )
+        aggs={
+            'creator': term_facet('creator.keyword'),
+            'lang': term_facet('title.lang.keyword'),
+        },
+        post_filters=FILTERS,
+        filters=FILTERS
     )
 )
 """Introduce searching facets."""
