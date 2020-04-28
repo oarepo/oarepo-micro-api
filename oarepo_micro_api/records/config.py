@@ -162,16 +162,16 @@ def term_facet(field, order='desc', size=100):
     }
 
 
-RECORDS_REST_FACETS = dict(
-    records=dict(
-        aggs={
+RECORDS_REST_FACETS = {
+    'records-record-v1.0.0': {
+        'aggs': {
             'creator': term_facet('creator.keyword'),
             'lang': term_facet('title.lang.keyword'),
         },
-        post_filters=FILTERS,
-        filters=FILTERS
-    )
-)
+        'post_filters': FILTERS,
+        'filters': FILTERS
+    }
+}
 """Introduce searching facets."""
 
 RECORDS_REST_SORT_OPTIONS = dict(
