@@ -17,35 +17,12 @@ from invenio_records_rest.utils import allow_all, check_elasticsearch
 
 from oarepo_micro_api.records.api import Record
 from oarepo_micro_api.records.facets import term_facet, title_lang_facet
+from oarepo_micro_api.records.filters import language_aware_match_filter, nested_terms_filter
 
 
 def _(x):
     """Identity function for string extraction."""
     return x
-
-
-def nested_filter(prefix, field, field_query=None, nested_query='terms'):
-    """Create a term filter.
-    :param prefix: Field path prefix
-    :param field: Field name.
-    :param field_query Field query function
-    :param nested_query Nested query name
-    :returns: Function that returns the Terms query.
-    """
-    field = prefix + '.' + field
-
-    def inner(values):
-        if field_query:
-            query = field_query(field)(values)
-        else:
-            query = Q(nested_query, **{field: values})
-        return Q('nested', path=prefix, query=query)
-
-    return inner
-
-
-def language_aware_match_filter(field):
-    return nested_filter(field, 'value', nested_query='match')
 
 
 def search_title(qstr=None):
@@ -61,7 +38,7 @@ def search_factory(*args, **kwargs):
 FILTERS = {
     'title': language_aware_match_filter('title'),
     'creator': terms_filter('creator.keyword'),
-    'lang': terms_filter('title.lang.keyword')
+    'title.lang': nested_terms_filter('title', 'lang', lambda field: terms_filter(f'{field}')),
 }
 
 RECORDS_REST_ENDPOINTS = {
