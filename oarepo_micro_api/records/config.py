@@ -16,6 +16,7 @@ from invenio_records_rest.query import default_search_factory
 from invenio_records_rest.utils import allow_all, check_elasticsearch
 
 from oarepo_micro_api.records.api import Record
+from oarepo_micro_api.records.facets import term_facet, title_lang_facet
 
 
 def _(x):
@@ -151,22 +152,11 @@ PIDSTORE_RECID_FIELD = 'pid'
 OAREPO_API_ENDPOINTS_ENABLED = True
 """Enable/disable automatic endpoint registration."""
 
-
-def term_facet(field, order='desc', size=100):
-    return {
-        'terms': {
-            'field': field,
-            'size': size,
-            "order": {"_key": order}
-        },
-    }
-
-
 RECORDS_REST_FACETS = {
     'records-record-v1.0.0': {
         'aggs': {
             'creator': term_facet('creator.keyword'),
-            'lang': term_facet('title.lang.keyword'),
+            'lang': title_lang_facet(),
         },
         'post_filters': FILTERS,
         'filters': FILTERS
