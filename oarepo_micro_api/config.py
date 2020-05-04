@@ -15,11 +15,9 @@ You overwrite and set instance-specific configuration by either:
 
 from __future__ import absolute_import, print_function
 
-from datetime import timedelta
-
-from invenio_app.config import APP_DEFAULT_SECURE_HEADERS
 # TODO: enable for iiif previews
-#from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
+# from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
+from invenio_cesnet_proxyidp.remote import ProxyIDPAuthRemote
 
 
 def _(x):
@@ -71,6 +69,7 @@ ACCOUNTS_USERINFO_HEADERS = True
 # Elasticsearch
 # =============
 import os
+
 ES_USER = os.getenv('OAREPO_ES_USER', None)
 ES_PASSWORD = os.getenv('OAREPO_ES_PASSWORD', None)
 ES_PARAMS = {}
@@ -78,7 +77,8 @@ ES_PARAMS = {}
 if ES_USER and ES_PASSWORD:
     ES_PARAMS = dict(http_auth=(ES_USER, ES_PASSWORD))
 
-SEARCH_ELASTIC_HOSTS = [dict(host=h, **ES_PARAMS) for h in os.getenv('OAREPO_SEARCH_ELASTIC_HOSTS', 'localhost').split(',')]
+SEARCH_ELASTIC_HOSTS = [dict(host=h, **ES_PARAMS) for h in
+                        os.getenv('OAREPO_SEARCH_ELASTIC_HOSTS', 'localhost').split(',')]
 
 # Celery configuration
 # ====================
@@ -135,9 +135,9 @@ OAISERVER_ID_PREFIX = 'oai:repozitar.cesnet.cz:'
 
 # Previewers
 # ==========
-#TODO: enable for previews
+# TODO: enable for previews
 #: Include IIIF preview for images.
-#PREVIEWER_PREFERENCE = ['iiif_image'] + BASE_PREFERENCE
+# PREVIEWER_PREFERENCE = ['iiif_image'] + BASE_PREFERENCE
 
 # Debug
 # =====
@@ -158,3 +158,18 @@ DEBUG_TB_INTERCEPT_REDIRECTS = False
 #     'font-src': ["'self'", "data:", "https://fonts.gstatic.com",
 #                  "https://fonts.googleapis.com"],
 # }
+
+PROXYIDP_CONFIG = dict(
+    base_url='https://login.cesnet.cz/oidc/',
+    consumer_key=os.getenv('PROXYIDP_CONSUMER_KEY', 'CHANGE_ME'),
+    consumer_secret=os.getenv('PROXYIDP_CONSUMER_SECRET', 'CHANGE_ME'),
+    scope='openid'  # TODO: request atleast email+profile
+)
+
+OAUTHCLIENT_REMOTE_APPS = dict(
+    proxyidp=ProxyIDPAuthRemote().remote_app()
+)
+
+INVENIO_OAREPO_UI_LOGIN_URL = '/api/openid/login/proxyidp'
+
+USERPROFILES_EXTEND_SECURITY_FORMS = False

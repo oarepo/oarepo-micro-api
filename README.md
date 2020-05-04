@@ -19,8 +19,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 Clone the repository
 ```
-git clone https://github.com/oarepo/oarepo-micro-api
+git clone --recursive https://github.com/oarepo/oarepo-micro-api
 ```
+
+or, if already cloned, update the submodules
+```
+git submodule update --init --recursive
+```
+
 
 Prepare virtualenv for the project
 ```

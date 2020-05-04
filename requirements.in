@@ -9,4 +9,5 @@ uwsgi>=2.0
 uwsgi-tools>=1.1.1
 uwsgitop>=0.11
 WTForms==2.2.1
+-e 3rdparty/invenio-cesnet-proxyidp
 -e .
