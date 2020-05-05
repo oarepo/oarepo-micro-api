@@ -163,7 +163,7 @@ PROXYIDP_CONFIG = dict(
     base_url='https://login.cesnet.cz/oidc/',
     consumer_key=os.getenv('PROXYIDP_CONSUMER_KEY', 'CHANGE_ME'),
     consumer_secret=os.getenv('PROXYIDP_CONSUMER_SECRET', 'CHANGE_ME'),
-    scope='openid'  # TODO: request atleast email+profile
+    scope=('openid', 'email', 'profile',)
 )
 
 OAUTHCLIENT_REMOTE_APPS = dict(
@@ -172,4 +172,7 @@ OAUTHCLIENT_REMOTE_APPS = dict(
 
 INVENIO_OAREPO_UI_LOGIN_URL = '/api/openid/login/proxyidp'
 
-USERPROFILES_EXTEND_SECURITY_FORMS = False
+USERPROFILES_EXTEND_SECURITY_FORMS = True
+SECURITY_SEND_REGISTER_EMAIL = False
+# Disable account confirmation requirement
+SECURITY_CONFIRMABLE = False
