@@ -8,6 +8,8 @@ metadata:
     project: oarepo-micro-api
 type: Opaque
 data:
+  proxyidp_client_id: CHANGE_THIS
+  proxyidp_client_secret: CHANGE_THIS
   secret_key: CHANGE_THIS
   db_connection: CHANGE_THIS
   es_password: CHANGE_THIS
@@ -85,6 +87,16 @@ spec:
               value: "redis://CHANGE_THIS:6379/2"
             - name: "OAREPO_ES_USER"
               value: "oarepo-micro-api"
+            - name: "PROXYIDP_CONSUMER_KEY"
+              valueFrom:
+                secretKeyRef:
+                  name: oarepo-micro-api-secrets
+                  key: proxyidp_client_id
+            - name: "PROXYIDP_CONSUMER_SECRET"
+                valueFrom:
+                  secretKeyRef:
+                    name: oarepo-micro-api-secrets
+                    key: proxyidp_client_secret
             - name: "OAREPO_ES_PASSWORD"
               valueFrom:
                 secretKeyRef:
