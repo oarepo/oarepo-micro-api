@@ -14,7 +14,9 @@
   ],
   "required": [
     "$schema",
-    "id",
-    "title"
+    "title",
+    "abstract",
+    "creator",
+    "description"
   ]
 }
