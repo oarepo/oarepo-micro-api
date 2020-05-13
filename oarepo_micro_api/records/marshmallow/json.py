@@ -11,11 +11,13 @@ from __future__ import absolute_import, print_function
 
 from invenio_jsonschemas import current_jsonschemas
 from invenio_oarepo_dc.marshmallow import DCObjectSchemaV1Mixin
-from invenio_oarepo_invenio_model.marshmallow import InvenioRecordSchemaV1Mixin
-from invenio_records_rest.schemas import Nested, StrictKeysMixin
-from invenio_records_rest.schemas.fields import DateString, GenFunction, \
-    PersistentIdentifier, SanitizedUnicode
-from marshmallow import fields, missing, validate
+from invenio_oarepo_invenio_model.marshmallow import InvenioRecordMetadataSchemaV1Mixin
+from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV1
+from invenio_records_rest.schemas import StrictKeysMixin
+from invenio_records_rest.schemas.fields import GenFunction, \
+    PersistentIdentifier
+from marshmallow import fields, missing, INCLUDE
+
 
 from oarepo_micro_api.records.api import Record
 
@@ -41,14 +43,14 @@ def schema_from_context(_, context):
     )
 
 
-class MetadataSchemaV1(InvenioRecordSchemaV1Mixin,
+class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
                        DCObjectSchemaV1Mixin):
     """Schema for the record metadata."""
-    _schema = GenFunction(
-        attribute="$schema",
-        data_key="$schema",
-        deserialize=schema_from_context,  # to be added only when loading
-    )
+    abstract = MultilingualStringSchemaV1(required=True)
+    description = MultilingualStringSchemaV1(required=True)
+
+    class Meta:
+        unknown = INCLUDE
 
 
 class RecordSchemaV1(StrictKeysMixin):

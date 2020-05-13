@@ -85,6 +85,15 @@ and apply the following manifests:
 
 Doing so will expose an API service on port 5000 in your cluster.
 
+## Admin
+
+### Manage access
+
+To allow log in for a certain federated EINFRA account use the following CLI command:
+```
+invenio proxyidp create-account <eduPersonUniqueId> <email> --username <username> --dn <displayname>
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
