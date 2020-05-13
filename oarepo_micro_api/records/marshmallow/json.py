@@ -16,7 +16,8 @@ from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV1
 from invenio_records_rest.schemas import StrictKeysMixin
 from invenio_records_rest.schemas.fields import GenFunction, \
     PersistentIdentifier
-from marshmallow import fields, missing
+from marshmallow import fields, missing, INCLUDE
+
 
 from oarepo_micro_api.records.api import Record
 
@@ -47,6 +48,9 @@ class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
     """Schema for the record metadata."""
     abstract = MultilingualStringSchemaV1(required=True)
     description = MultilingualStringSchemaV1(required=True)
+
+    class Meta:
+        unknown = INCLUDE
 
 
 class RecordSchemaV1(StrictKeysMixin):
