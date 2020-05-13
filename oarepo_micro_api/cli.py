@@ -23,6 +23,7 @@ from invenio_search import current_search
 from invenio_userprofiles import UserProfile
 
 from oarepo_micro_api.records.api import Record
+from oarepo_micro_api.records.constants import ACL_PREFERRED_SCHEMA
 
 
 def minter(pid_type, pid_field, record):
@@ -92,6 +93,7 @@ class ItemGenerator(Generator):
         size = self.holder.items["total"]
         objs = [
             {
+                "owners": [-1],
                 "pid": self.create_pid(),
                 "identifier": "{}".format(uuid4()),
                 "abstract": [{"lang": random_lang(), "value": lorem.text()}],
@@ -208,6 +210,9 @@ def setup(admin_password, recreate_db, skip_demo_data, skip_file_location, verbo
     # Create files location
     if not skip_file_location:
         run_command("files location --default oarepo /tmp/oarepo")
+
+    # Create ACLs index for preferred SCHEMA
+    run_command("invenio invenio_explicit_acls prepare {}".format(ACL_PREFERRED_SCHEMA))
 
     # Generate demo data
     if not skip_demo_data:

@@ -10,6 +10,17 @@
     },
     {
       "$ref": "../invenio-v1.0.0.json#/definitions/InvenioRecord"
+    },
+    {
+      "properties": {
+        "owners": {
+          "description": "List of user ids that are owners of record.",
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      }
     }
   ],
   "required": [

@@ -10,19 +10,27 @@
 from __future__ import absolute_import, print_function
 
 from elasticsearch_dsl import Q
+from invenio_explicit_acls.acl_records_search import ACLRecordsSearch
 from invenio_indexer.api import RecordIndexer
 from invenio_records_rest.facets import terms_filter
 from invenio_records_rest.query import default_search_factory
-from invenio_records_rest.utils import allow_all, check_elasticsearch
+from invenio_records_rest.utils import allow_all
+from invenio_search import RecordsSearch
+from invenio_search.api import DefaultFilter
 
 from oarepo_micro_api.records.api import Record
 from oarepo_micro_api.records.facets import term_facet, title_lang_facet
 from oarepo_micro_api.records.filters import language_aware_match_filter, nested_terms_filter
+from oarepo_micro_api.records.permissions import authenticated_permission_factory, admin_permission_factory, \
+    owner_permission_filter, owner_permission_factory
 
 
 def _(x):
     """Identity function for string extraction."""
     return x
+
+
+RECORDS_SEARCH_INDEX = 'records-record-v1.0.0'
 
 
 def search_title(qstr=None):
@@ -31,8 +39,18 @@ def search_title(qstr=None):
     return Q()
 
 
+class FilteredRecordsSearch(RecordsSearch):
+    class Meta:
+        index = RECORDS_SEARCH_INDEX
+        doc_types = None
+        default_filter = DefaultFilter(owner_permission_filter)
+
+
 def search_factory(*args, **kwargs):
-    return default_search_factory(*args, query_parser=search_title, **kwargs)
+    return default_search_factory(
+        *args,
+        query_parser=search_title,
+        **kwargs)
 
 
 FILTERS = {
@@ -49,8 +67,9 @@ RECORDS_REST_ENDPOINTS = {
         default_endpoint_prefix=True,
         record_class=Record,
         indexer_class=RecordIndexer,
+        search_class=FilteredRecordsSearch,
         search_factory_imp=search_factory,
-        search_index='records-record-v1.0.0',
+        search_index=RECORDS_SEARCH_INDEX,
         search_type=None,
         record_serializers={
             'application/json': ('oarepo_micro_api.records.serializers'
@@ -71,10 +90,10 @@ RECORDS_REST_ENDPOINTS = {
         default_media_type='application/json',
         max_result_window=10000,
         error_handlers=dict(),
-        create_permission_factory_imp=allow_all,
-        read_permission_factory_imp=check_elasticsearch,
-        update_permission_factory_imp=allow_all,
-        delete_permission_factory_imp=allow_all,
+        create_permission_factory_imp=authenticated_permission_factory,
+        read_permission_factory_imp=owner_permission_factory,
+        update_permission_factory_imp=owner_permission_factory,
+        delete_permission_factory_imp=admin_permission_factory,
         list_permission_factory_imp=allow_all,
         links_factory_imp='invenio_records_files.'
                           'links:default_record_files_links_factory',
@@ -130,7 +149,7 @@ OAREPO_API_ENDPOINTS_ENABLED = True
 """Enable/disable automatic endpoint registration."""
 
 RECORDS_REST_FACETS = {
-    'records-record-v1.0.0': {
+    RECORDS_SEARCH_INDEX: {
         'aggs': {
             'creator': term_facet('creator.keyword'),
             'lang': title_lang_facet(),
@@ -175,5 +194,5 @@ RECORDS_FILES_REST_ENDPOINTS = {
 """Records files integration."""
 
 FILES_REST_PERMISSION_FACTORY = \
-    'oarepo_micro_api.records.permissions:files_permission_factory'
+    'oarepo_micro_api.records.permissions:admin_permission_factory'
 """Files-REST permissions factory."""

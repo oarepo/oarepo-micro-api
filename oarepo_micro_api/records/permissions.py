@@ -6,10 +6,31 @@
 # the terms of the MIT License; see LICENSE file for more details.
 
 """Permissions for OARepo Micro API."""
+from elasticsearch_dsl import Q
+from flask_login import current_user
+from flask_principal import UserNeed, RoleNeed
+from invenio_access import Permission, authenticated_user
 
-from invenio_access import Permission, any_user
+
+def authenticated_permission_factory(record=None):
+    return Permission(authenticated_user)
 
 
-def files_permission_factory(obj, action=None):
+def admin_permission_factory(obj, action=None):
     """Permissions factory for buckets."""
-    return Permission(any_user)
+    return Permission(RoleNeed('admin'))
+
+
+def owner_permission_factory(record=None):
+    """Permissions factory for record owners."""
+    # TODO: adapt for more owners
+    return Permission(UserNeed(int(record.get('owners')[0])))
+
+
+def owner_permission_filter():
+    """Search only in owned or system records."""
+    ids = [-1]
+    cuid = current_user.get_id()
+    if cuid:
+        ids.append(cuid)
+    return Q('terms', owners=ids)
