@@ -50,6 +50,9 @@
       }
     ],
     "properties": {
+      "owners": {
+        "type": "integer"
+      },
       "_search": {
         "type": "text",
         "analyzer": "czech"
