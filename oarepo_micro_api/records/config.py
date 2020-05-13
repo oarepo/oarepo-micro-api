@@ -21,8 +21,8 @@ from invenio_search.api import DefaultFilter
 from oarepo_micro_api.records.api import Record
 from oarepo_micro_api.records.facets import term_facet, title_lang_facet
 from oarepo_micro_api.records.filters import language_aware_match_filter, nested_terms_filter
-from oarepo_micro_api.records.permissions import authenticated_permission_factory, admin_permission_factory,\
-    owner_permission_filter
+from oarepo_micro_api.records.permissions import authenticated_permission_factory, admin_permission_factory, \
+    owner_permission_filter, owner_permission_factory
 
 
 def _(x):
@@ -91,8 +91,8 @@ RECORDS_REST_ENDPOINTS = {
         max_result_window=10000,
         error_handlers=dict(),
         create_permission_factory_imp=authenticated_permission_factory,
-        read_permission_factory_imp=authenticated_permission_factory,
-        update_permission_factory_imp=authenticated_permission_factory,
+        read_permission_factory_imp=owner_permission_factory,
+        update_permission_factory_imp=owner_permission_factory,
         delete_permission_factory_imp=admin_permission_factory,
         list_permission_factory_imp=allow_all,
         links_factory_imp='invenio_records_files.'

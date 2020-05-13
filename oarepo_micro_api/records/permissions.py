@@ -23,7 +23,8 @@ def admin_permission_factory(obj, action=None):
 
 def owner_permission_factory(record=None):
     """Permissions factory for record owners."""
-    return Permission(UserNeed(record.get('owner')))
+    # TODO: adapt for more owners
+    return Permission(UserNeed(int(record.get('owners')[0])))
 
 
 def owner_permission_filter():
