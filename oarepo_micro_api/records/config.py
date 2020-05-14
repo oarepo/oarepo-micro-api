@@ -56,6 +56,7 @@ def search_factory(*args, **kwargs):
 FILTERS = {
     'title': language_aware_match_filter('title'),
     'creator': terms_filter('creator.keyword'),
+    'owners': terms_filter('owners'),
     'title.lang': nested_terms_filter('title', 'lang', lambda field: terms_filter(f'{field}')),
 }
 
