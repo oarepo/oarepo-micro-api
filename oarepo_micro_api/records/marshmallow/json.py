@@ -57,7 +57,7 @@ class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
     @pre_load
     def set_owners(self, in_data, **kwargs):
         if current_user.is_authenticated:
-            in_data['owners'] = current_user.get_id()
+            in_data['owners'] = [current_user.get_id()]
         return in_data
 
     class Meta:

@@ -27,9 +27,9 @@ def owner_permission_factory(record=None):
     return Permission(UserNeed(int(record.get('owners')[0])))
 
 
-def owner_permission_filter():
+def owner_permission_filter(owned_only=False):
     """Search only in owned or system records."""
-    ids = [-1]
+    ids = [] if owned_only else [-1]
     cuid = current_user.get_id()
     if cuid:
         ids.append(cuid)

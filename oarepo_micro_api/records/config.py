@@ -20,7 +20,7 @@ from invenio_search.api import DefaultFilter
 
 from oarepo_micro_api.records.api import Record
 from oarepo_micro_api.records.facets import term_facet, title_lang_facet
-from oarepo_micro_api.records.filters import language_aware_match_filter, nested_terms_filter
+from oarepo_micro_api.records.filters import language_aware_match_filter, nested_terms_filter, owned_filter
 from oarepo_micro_api.records.permissions import authenticated_permission_factory, admin_permission_factory, \
     owner_permission_filter, owner_permission_factory
 
@@ -56,7 +56,7 @@ def search_factory(*args, **kwargs):
 FILTERS = {
     'title': language_aware_match_filter('title'),
     'creator': terms_filter('creator.keyword'),
-    'owners': terms_filter('owners'),
+    'owned': owned_filter('owners'),
     'title.lang': nested_terms_filter('title', 'lang', lambda field: terms_filter(f'{field}')),
 }
 
@@ -83,6 +83,8 @@ RECORDS_REST_ENDPOINTS = {
         record_loaders={
             'application/json': ('oarepo_micro_api.records.loaders'
                                  ':json_v1'),
+            'application/json-patch+json': ('invenio_records_rest.loaders'
+                                            ':json_patch_loader'),
         },
         list_route='/records/',
         item_route='/records/<pid(recid,'

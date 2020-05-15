@@ -6,6 +6,8 @@
 # the terms of the MIT License; see LICENSE file for more details.
 from elasticsearch_dsl import Q
 
+from oarepo_micro_api.records.permissions import owner_permission_filter
+
 
 def nested_filter(prefix, field, field_query=None, nested_query='terms'):
     """Create a term filter.
@@ -23,6 +25,15 @@ def nested_filter(prefix, field, field_query=None, nested_query='terms'):
         else:
             query = Q(nested_query, **{field: values})
         return Q('nested', path=prefix, query=query)
+
+    return inner
+
+
+def owned_filter(field):
+    """Filter out records not owned by current user."""
+
+    def inner(values):
+        return owner_permission_filter(owned_only=True)
 
     return inner
 
