@@ -14,6 +14,7 @@ from invenio_jsonschemas import current_jsonschemas
 from invenio_oarepo_dc.marshmallow import DCObjectSchemaV1Mixin
 from invenio_oarepo_invenio_model.marshmallow import InvenioRecordMetadataSchemaV1Mixin
 from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV1
+from invenio_rest.serializer import BaseSchema as Schema
 from invenio_records_rest.schemas import StrictKeysMixin
 from invenio_records_rest.schemas.fields import GenFunction, \
     PersistentIdentifier
@@ -44,6 +45,18 @@ def schema_from_context(_, context):
     )
 
 
+class CitationSchemaV1(Schema):
+    id = fields.Integer(attribute='pid.pid_value')
+    type = fields.Method('get_type')
+    title = fields.Str(attribute='metadata.title')
+    abstract = fields.Str(attribute='metadata.description')
+    author = fields.Str(attribute='metadata.creator')
+    contributors = fields.Str(attribute='metadata.contributor')
+
+    def get_type(self, obj):
+        return 'article'
+
+
 class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
                        DCObjectSchemaV1Mixin):
     """Schema for the record metadata."""
@@ -62,7 +75,6 @@ class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
 
     class Meta:
         unknown = INCLUDE
-
 
 
 class RecordSchemaV1(StrictKeysMixin):

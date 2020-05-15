@@ -75,6 +75,8 @@ RECORDS_REST_ENDPOINTS = {
         record_serializers={
             'application/json': ('oarepo_micro_api.records.serializers'
                                  ':json_v1_response'),
+            'text/x-bibliography': ('oarepo_micro_api.records.serializers'
+                                    ':citeproc_v1_response'),
         },
         search_serializers={
             'application/json': ('oarepo_micro_api.records.serializers'
@@ -94,7 +96,7 @@ RECORDS_REST_ENDPOINTS = {
         max_result_window=10000,
         error_handlers=dict(),
         create_permission_factory_imp=authenticated_permission_factory,
-        read_permission_factory_imp=owner_permission_factory,
+        read_permission_factory_imp=allow_all,
         update_permission_factory_imp=owner_permission_factory,
         delete_permission_factory_imp=admin_permission_factory,
         list_permission_factory_imp=allow_all,
