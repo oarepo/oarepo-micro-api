@@ -60,7 +60,7 @@ author = u'Miroslav Bauer @ CESNET'
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join(os.path.dirname(__file__), '..',
-                       'oarepo_micro_api', 'version.py'),
+                       'video_repository_api', 'version.py'),
           'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
@@ -119,13 +119,13 @@ html_theme = 'alabaster'
 html_theme_options = {
     'description': 'OARepo REST API microservice',
     'github_user': 'inveniosoftware',
-    'github_repo': 'oarepo-micro-api',
+    'github_repo': 'video-repository-api',
     'github_button': False,
     'github_banner': True,
     'show_powered_by': False,
     'extra_nav_links': {
-        'oarepo-micro-api@GitHub': 'https://github.com/oarepo/oarepo-micro-api',
-        'oarepo-micro-api@PyPI': 'https://pypi.python.org/pypi/oarepo-micro-api/',
+        'video-repository-api@GitHub': 'https://github.com/CESNET/video-repository-api',
+        'video-repository-api@PyPI': 'https://pypi.python.org/pypi/video-repository-api/',
     }
 }
 
@@ -230,7 +230,7 @@ html_sidebars = {
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'oarepo-micro-api_namedoc'
+htmlhelp_basename = 'video-repository-api_namedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -252,7 +252,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'oarepo-micro-api.tex', u'oarepo-micro-api Documentation',
+    (master_doc, 'video-repository-api.tex', u'video-repository-api Documentation',
      u'Miroslav Bauer @ CESNET', 'manual'),
 ]
 
@@ -282,7 +282,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'oarepo-micro-api', u'oarepo-micro-api Documentation',
+    (master_doc, 'video-repository-api', u'video-repository-api Documentation',
      [author], 1)
 ]
 
@@ -296,8 +296,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'oarepo-micro-api', u'OARepo Micro API Documentation',
-     author, 'oarepo-micro-api', 'OARepo REST API microservice',
+    (master_doc, 'video-repository-api', u'OARepo Micro API Documentation',
+     author, 'video-repository-api', 'OARepo REST API microservice',
      'Miscellaneous'),
 ]
 

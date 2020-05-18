@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: oarepo-micro-api-secret
+  name: video-repository-api-secret
   labels:
-    app: oarepo-micro-api
-    project: oarepo-micro-api
+    app: video-repository-api
+    project: video-repository-api
 type: Opaque
 data:
   proxyidp_client_id: CHANGE_THIS
@@ -19,26 +19,26 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   namespace: default
-  name: oarepo-micro-api
+  name: video-repository-api
   labels:
-    app: oarepo-micro-api
-    project: oarepo-micro-api
+    app: video-repository-api
+    project: video-repository-api
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: oarepo-micro-api
-      project: oarepo-micro-api
+      app: video-repository-api
+      project: video-repository-api
   template:
     metadata:
       labels:
-        app: oarepo-micro-api
-        project: oarepo-micro-api
+        app: video-repository-api
+        project: video-repository-api
     spec:
       containers:
-        - name: oarepo-micro-api
-          image: oarepo-api:latest
+        - name: video-repository-api
+          image: video-repository-api:latest
           command: ["/opt/rh/rh-python36/root/usr/bin/uwsgi"]
           args: ["./docker/uwsgi/uwsgi_http_custom.ini"]
           startupProbe:
@@ -86,35 +86,35 @@ spec:
             - name: "INVENIO_CELERY_RESULT_BACKEND"
               value: "redis://CHANGE_THIS:6379/2"
             - name: "OAREPO_ES_USER"
-              value: "oarepo-micro-api"
+              value: "video-repository-api"
             - name: "PROXYIDP_CONSUMER_KEY"
               valueFrom:
                 secretKeyRef:
-                  name: oarepo-micro-api-secrets
+                  name: video-repository-api-secrets
                   key: proxyidp_client_id
             - name: "PROXYIDP_CONSUMER_SECRET"
                 valueFrom:
                   secretKeyRef:
-                    name: oarepo-micro-api-secrets
+                    name: video-repository-api-secrets
                     key: proxyidp_client_secret
             - name: "OAREPO_ES_PASSWORD"
               valueFrom:
                 secretKeyRef:
-                  name: oarepo-micro-api-secrets
+                  name: video-repository-api-secrets
                   key: es_password
             - name: "INVENIO_SEARCH_INDEX_PREFIX"
-              value: "oarepo-"
+              value: "cesnet-videos-"
             - name: "OAREPO_SEARCH_ELASTIC_HOSTS"
               value: "CHANGE_THIS"
             - name: "INVENIO_SECRET_KEY"
               valueFrom:
                 secretKeyRef:
-                  name: oarepo-micro-api-secrets
+                  name: video-repository-api-secrets
                   key: secret_key
             - name: "INVENIO_SQLALCHEMY_DATABASE_URI"
               valueFrom:
                 secretKeyRef:
-                  name: oarepo-micro-api-secrets
+                  name: video-repository-api-secrets
                   key: db_connection
             - name: "INVENIO_WSGI_PROXIES"
               value: "2"

@@ -17,20 +17,20 @@ packages = find_packages()
 
 # Get the version string. Cannot be done with import!
 g = {}
-with open(os.path.join('oarepo_micro_api', 'version.py'), 'rt') as fp:
+with open(os.path.join('video_repository_api', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
     version = g['__version__']
 
 setup(
-    name='oarepo-micro-api',
+    name='video-repository-api',
     version=version,
     description=__doc__,
     long_description=readme,
-    keywords='oarepo-micro-api Invenio',
+    keywords='video-repository-api repository api videos Invenio',
     license='MIT',
     author='Miroslav Bauer @ CESNET',
     author_email='bauer@cesnet.cz',
-    url='https://github.com/oarepo/oarepo-micro-api',
+    url='https://github.com/CESNET/video-repository-api',
     packages=packages,
     zip_safe=False,
     include_package_data=True,
@@ -40,23 +40,23 @@ setup(
             'oarepo = invenio_app.cli:cli',
         ],
         "invenio_base.api_apps": [
-            "oarepo_micro_api = oarepo_micro_api.records.ext:OARepoMicroAPI",
+            "video_repository_api = video_repository_api.records.ext:OARepoMicroAPI",
         ],
         "flask.commands": [
-            "demo = oarepo_micro_api.cli:demo",
-            "setup = oarepo_micro_api.cli:setup",
+            "demo = video_repository_api.cli:demo",
+            "setup = video_repository_api.cli:setup",
         ],
         'invenio_config.module': [
-            'oarepo_micro_api = oarepo_micro_api.config',
+            'video_repository_api = video_repository_api.config',
         ],
         'invenio_i18n.translations': [
-            'messages = oarepo_micro_api',
+            'messages = video_repository_api',
         ],
         'invenio_jsonschemas.schemas': [
-            'records = oarepo_micro_api.records.jsonschemas'
+            'records = video_repository_api.records.jsonschemas'
         ],
         'invenio_search.mappings': [
-            'records = oarepo_micro_api.records.mappings',
+            'records = video_repository_api.records.mappings',
         ],
     },
     classifiers=[

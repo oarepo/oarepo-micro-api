@@ -12,5 +12,5 @@ API Docs
 Views
 -----
 
-.. automodule:: oarepo_micro_api.theme.views
+.. automodule:: video_repository_api.theme.views
    :members:

@@ -104,7 +104,7 @@ SEARCH_ELASTIC_HOSTS = [dict(host=h, **ES_PARAMS) for h in
 # ========
 #: Database URI including user and password
 SQLALCHEMY_DATABASE_URI = \
-    'postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@localhost/oarepo-micro-api'
+    'postgresql+psycopg2://video-repository-api:video-repository-api@localhost/video-repository-api'
 
 # JSONSchemas
 # ===========

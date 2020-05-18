@@ -6,7 +6,7 @@
 # the terms of the MIT License; see LICENSE file for more details.
 from elasticsearch_dsl import Q
 
-from oarepo_micro_api.records.permissions import owner_permission_filter
+from video_repository_api.records.permissions import owner_permission_filter
 
 
 def nested_filter(prefix, field, field_query=None, nested_query='terms'):

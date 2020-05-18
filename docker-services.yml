@@ -12,7 +12,7 @@ services:
       context: ./
       args:
         - ENVIRONMENT=DEV
-    image: oarepo-micro-api
+    image: video-repository-api
     environment:
       - "INVENIO_SERVER_NAME=localhost"
       - "INVENIO_USER=invenio"
@@ -24,12 +24,12 @@ services:
       - "INVENIO_CELERY_RESULT_BACKEND=redis://cache:6379/2"
       - "INVENIO_SEARCH_ELASTIC_HOSTS=['es:9200']"
       - "INVENIO_SECRET_KEY=CHANGE_ME"
-      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@db/oarepo-micro-api"
+      - "INVENIO_SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://video-repository-api:video-repository-api@db/video-repository-api"
       - "INVENIO_WSGI_PROXIES=2"
       - "INVENIO_RATELIMIT_STORAGE_URL=redis://cache:6379/3"
   lb:
     build: ./docker/haproxy/
-    image: oarepo-micro-api-lb
+    image: video-repository-api-lb
     restart: "always"
     ports:
       - "80:80"
@@ -37,7 +37,7 @@ services:
       - "8080:8080"
   frontend:
     build: ./docker/nginx/
-    image: oarepo-micro-api-frontend
+    image: video-repository-api-frontend
     restart: "always"
     ports:
       - "80"
@@ -52,9 +52,9 @@ services:
     image: postgres:9.6
     restart: "always"
     environment:
-      - "POSTGRES_USER=oarepo-micro-api"
-      - "POSTGRES_PASSWORD=oarepo-micro-api"
-      - "POSTGRES_DB=oarepo-micro-api"
+      - "POSTGRES_USER=video-repository-api"
+      - "POSTGRES_PASSWORD=video-repository-api"
+      - "POSTGRES_DB=video-repository-api"
     ports:
       - "127.0.0.1:5432:5432"
   mq:

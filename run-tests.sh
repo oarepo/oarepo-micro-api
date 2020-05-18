@@ -8,7 +8,7 @@
 
 
 pipenv check && \
-pipenv run pydocstyle oarepo_micro_api tests docs && \
+pipenv run pydocstyle video_repository_api tests docs && \
 pipenv run isort -rc -c -df && \
 pipenv run check-manifest --ignore ".travis-*,docs/_build*" && \
 pipenv run sphinx-build -qnNW docs docs/_build/html && \

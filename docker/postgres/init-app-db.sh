@@ -9,7 +9,7 @@
 set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-    CREATE ROLE oarepo-micro-api WITH LOGIN PASSWORD 'oarepo-micro-api';
-    ALTER ROLE oarepo-micro-api CREATEDB;
+    CREATE ROLE video-repository-api WITH LOGIN PASSWORD 'video-repository-api';
+    ALTER ROLE video-repository-api CREATEDB;
     \du;
 EOSQL

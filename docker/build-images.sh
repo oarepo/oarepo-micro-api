@@ -11,4 +11,4 @@ docker build -f Dockerfile.base -t oarepo-api-base:latest .
 docker build -f Dockerfile.base -t oarepo-api-base:3.2.1 .
 
 # Build application image
-docker build --build-arg DEPENDENCIES_VERSION=3.2.1 . -t oarepo-api
+docker build --build-arg DEPENDENCIES_VERSION=3.2.1 . -t video-repository-api

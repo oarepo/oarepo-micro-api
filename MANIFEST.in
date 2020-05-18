@@ -41,9 +41,9 @@ recursive-include docs *.py
 recursive-include docs *.rst
 recursive-include docs *.txt
 recursive-include docs Makefile
-recursive-include oarepo_micro_api *.gitkeep
-recursive-include oarepo_micro_api *.po *.pot *.mo
-recursive-include oarepo_micro_api *.json *.html *.js *.scss
-recursive-include oarepo_micro_api *.png *.jpg *.svg
+recursive-include video_repository_api *.gitkeep
+recursive-include video_repository_api *.po *.pot *.mo
+recursive-include video_repository_api *.json *.html *.js *.scss
+recursive-include video_repository_api *.png *.jpg *.svg
 recursive-include docker *.cfg *.conf *.crt *.ini *.key *.pem *.sh
 recursive-include tests *.py

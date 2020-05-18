@@ -9,4 +9,4 @@
 Usage
 =====
 
-.. automodule:: oarepo_micro_api
+.. automodule:: video_repository_api

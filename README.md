@@ -1,10 +1,10 @@
 # OARepo Micro API
 
-[![image](https://img.shields.io/travis/oarepo/oarepo-micro-api.svg)](https://travis-ci.org/oarepo/oarepo-micro-api)
-[![image](https://img.shields.io/coveralls/oarepo/oarepo-micro-api.svg)](https://coveralls.io/r/oarepo/oarepo-micro-api)
-[![image](https://img.shields.io/github/license/oarepo/oarepo-micro-api.svg)](https://github.com/oarepo/oarepo-micro-api/blob/master/LICENSE)
+[![image](https://img.shields.io/travis/CESNET/video-repository-api.svg)](https://travis-ci.org/CESNET/video-repository-api)
+[![image](https://img.shields.io/coveralls/CESNET/video-repository-api.svg)](https://coveralls.io/r/CESNET/video-repository-api)
+[![image](https://img.shields.io/github/license/CESNET/video-repository-api.svg)](https://github.com/CESNET/video-repository-api/blob/master/LICENSE)
 
-OARepo REST API microservice
+CESNET Video Repository API microservice
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Clone the repository
 ```
-git clone --recursive https://github.com/oarepo/oarepo-micro-api
+git clone --recursive https://github.com/CESNET/video-repository-api
 ```
 
 or, if already cloned, update the submodules
@@ -30,8 +30,8 @@ git submodule update --init --recursive
 
 Prepare virtualenv for the project
 ```
-mkvirtualenv oarepo-micro-api
-workon oarepo-micro-api
+mkvirtualenv video-repository-api
+workon video-repository-api
 ```
 _Note: when using `direnv`, virtualenv will be created automatically for you._
 

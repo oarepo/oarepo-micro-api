@@ -7,7 +7,7 @@
 
 """Version information for OARepo Micro API.
 
-This file is imported by ``oarepo_micro_api.__init__``,
+This file is imported by ``video_repository_api.__init__``,
 and parsed by ``setup.py``.
 """
 

@@ -26,7 +26,7 @@ class OARepoMicroAPI(object):
     def init_app(self, app):
         """Flask application initialization."""
         self.init_config(app)
-        app.extensions['oarepo-micro-api'] = self
+        app.extensions['video-repository-api'] = self
         self._register_signals(app)
 
     def init_config(self, app):

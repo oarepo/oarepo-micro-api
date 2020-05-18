@@ -18,10 +18,10 @@ from invenio_records_rest.utils import allow_all
 from invenio_search import RecordsSearch
 from invenio_search.api import DefaultFilter
 
-from oarepo_micro_api.records.api import Record
-from oarepo_micro_api.records.facets import term_facet, title_lang_facet
-from oarepo_micro_api.records.filters import language_aware_match_filter, nested_terms_filter, owned_filter
-from oarepo_micro_api.records.permissions import authenticated_permission_factory, admin_permission_factory, \
+from video_repository_api.records.api import Record
+from video_repository_api.records.facets import term_facet, title_lang_facet
+from video_repository_api.records.filters import language_aware_match_filter, nested_terms_filter, owned_filter
+from video_repository_api.records.permissions import authenticated_permission_factory, admin_permission_factory, \
     owner_permission_filter, owner_permission_factory
 
 
@@ -73,24 +73,24 @@ RECORDS_REST_ENDPOINTS = {
         search_index=RECORDS_SEARCH_INDEX,
         search_type=None,
         record_serializers={
-            'application/json': ('oarepo_micro_api.records.serializers'
+            'application/json': ('video_repository_api.records.serializers'
                                  ':json_v1_response'),
-            'text/x-bibliography': ('oarepo_micro_api.records.serializers'
+            'text/x-bibliography': ('video_repository_api.records.serializers'
                                     ':citeproc_v1_response'),
         },
         search_serializers={
-            'application/json': ('oarepo_micro_api.records.serializers'
+            'application/json': ('video_repository_api.records.serializers'
                                  ':json_v1_search'),
         },
         record_loaders={
-            'application/json': ('oarepo_micro_api.records.loaders'
+            'application/json': ('video_repository_api.records.loaders'
                                  ':json_v1'),
             'application/json-patch+json': ('invenio_records_rest.loaders'
                                             ':json_patch_loader'),
         },
         list_route='/records/',
         item_route='/records/<pid(recid,'
-                   'record_class="oarepo_micro_api.records.api.Record")'
+                   'record_class="video_repository_api.records.api.Record")'
                    ':pid_value>',
         default_media_type='application/json',
         max_result_window=10000,
@@ -104,7 +104,7 @@ RECORDS_REST_ENDPOINTS = {
                           'links:default_record_files_links_factory',
     ),
 }
-"""REST API for oarepo_micro_api."""
+"""REST API for video_repository_api."""
 
 INVENIO_OAREPO_UI_COLLECTIONS = {
     "records": {
@@ -146,7 +146,7 @@ RECORDS_UI_ENDPOINTS = dict(
         record_class='invenio_records_files.api:Record',
     ),
 )
-"""Records UI for oarepo_micro_api."""
+"""Records UI for video_repository_api."""
 
 PIDSTORE_RECID_FIELD = 'pid'
 
@@ -199,5 +199,5 @@ RECORDS_FILES_REST_ENDPOINTS = {
 """Records files integration."""
 
 FILES_REST_PERMISSION_FACTORY = \
-    'oarepo_micro_api.records.permissions:admin_permission_factory'
+    'video_repository_api.records.permissions:admin_permission_factory'
 """Files-REST permissions factory."""

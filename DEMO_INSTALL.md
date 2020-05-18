@@ -2,16 +2,16 @@
 
 Install the dependencies:
 ```bash
-git clone git@github.com:oarepo/oarepo-micro-api.git
-mkvirtualenv --python=/usr/bin/python3 oarepo-micro-api
+git clone git@github.com:CESNET/video-repository-api.git
+mkvirtualenv --python=/usr/bin/python3 video-repository-api
 
 ./scripts/bootstrap
 ```
 
 In case your db is not in docker, create the following user and database:
 ```bash
-sudo -u postgres createuser oarepo-micro-api -P -l
-sudo -u postgres createdb oarepo-micro-api -O oarepo-micro-api
+sudo -u postgres createuser video-repository-api -P -l
+sudo -u postgres createdb video-repository-api -O video-repository-api
 ```
 
 Otherwise, run the minimal infrastructure in docker:

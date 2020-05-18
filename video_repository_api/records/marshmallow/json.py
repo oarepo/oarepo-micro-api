@@ -20,8 +20,8 @@ from invenio_records_rest.schemas.fields import GenFunction, \
     PersistentIdentifier
 from marshmallow import fields, missing, INCLUDE, pre_load
 
-from oarepo_micro_api.records.api import Record
-from oarepo_micro_api.records.constants import ACL_ALLOWED_SCHEMAS, ACL_PREFERRED_SCHEMA
+from video_repository_api.records.api import Record
+from video_repository_api.records.constants import ACL_ALLOWED_SCHEMAS, ACL_PREFERRED_SCHEMA
 
 
 def bucket_from_context(_, context):

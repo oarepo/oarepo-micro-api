@@ -59,7 +59,7 @@ services:
 #      file: docker-services.yml
 #      service: app
 #    command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
-#    image: oarepo-micro-api
+#    image: video-repository-api
 #    ports:
 #      - "5000"
 #    volumes:
@@ -77,7 +77,7 @@ services:
       file: docker-services.yml
       service: app
     command: ["uwsgi ./docker/uwsgi/uwsgi_http_custom.ini"]
-    image: oarepo-api
+    image: video-repository-api
     ports:
       - "5000"
     volumes:
@@ -97,7 +97,7 @@ services:
 #      service: app
 #    restart: "always"
 #    command: ["celery worker -A invenio_app.celery --loglevel=INFO"]
-#    image: oarepo-micro-api
+#    image: video-repository-api
 #    links:
 #      - cache
 #      - es

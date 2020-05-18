@@ -17,7 +17,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/oarepo/oarepo-micro-api/issues.
+Report bugs at https://github.com/CESNET/video-repository-api/issues.
 
 If you are reporting a bug, please include:
 
@@ -48,7 +48,7 @@ Submit Feedback
 ~~~~~~~~~~~~~~~
 
 The best way to send feedback is to file an issue at
-https://github.com/oarepo/oarepo-micro-api/issues.
+https://github.com/CESNET/video-repository-api/issues.
 
 If you are proposing a feature:
 
@@ -60,14 +60,14 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `oarepo-micro-api` for local development.
+Ready to contribute? Here's how to set up `video-repository-api` for local development.
 
-1. Fork the `oarepo/oarepo-micro-api` repo on GitHub.
+1. Fork the `CESNET/video-repository-api` repo on GitHub.
 2. Clone your fork locally:
 
    .. code-block:: console
 
-      $ git clone git@github.com:your_name_here/oarepo-micro-api.git
+      $ git clone git@github.com:your_name_here/video-repository-api.git
 
 3. Install your local copy. Assuming you have
    `pipenv <https://docs.pipenv.org/install/#installing-pipenv>`_, installed, this is how you
@@ -75,7 +75,7 @@ Ready to contribute? Here's how to set up `oarepo-micro-api` for local developme
 
    .. code-block:: console
 
-      $ cd oarepo-micro-api/
+      $ cd video-repository-api/
       $ pipenv run install -e .[all]
 
 4. Create a branch for local development:
@@ -120,5 +120,5 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring.
 3. The pull request should work for Python 2.7, 3.3, 3.4 and 3.5. Check
-   https://travis-ci.org/oarepo/oarepo-micro-api/pull_requests
+   https://travis-ci.org/CESNET/video-repository-api/pull_requests
    and make sure that the tests pass for all supported Python versions.

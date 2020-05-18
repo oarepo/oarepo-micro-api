@@ -11,7 +11,7 @@ from __future__ import absolute_import, print_function
 
 from invenio_records_files.api import Record as FilesRecord
 
-from oarepo_micro_api.records.constants import ACL_ALLOWED_SCHEMAS, ACL_PREFERRED_SCHEMA
+from video_repository_api.records.constants import ACL_ALLOWED_SCHEMAS, ACL_PREFERRED_SCHEMA
 
 
 class Record(FilesRecord):

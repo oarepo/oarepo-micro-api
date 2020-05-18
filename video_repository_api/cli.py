@@ -22,8 +22,8 @@ from invenio_pidstore.providers.recordid_v2 import RecordIdProviderV2
 from invenio_search import current_search
 from invenio_userprofiles import UserProfile
 
-from oarepo_micro_api.records.api import Record
-from oarepo_micro_api.records.constants import ACL_PREFERRED_SCHEMA
+from video_repository_api.records.api import Record
+from video_repository_api.records.constants import ACL_PREFERRED_SCHEMA
 
 
 def minter(pid_type, pid_field, record):

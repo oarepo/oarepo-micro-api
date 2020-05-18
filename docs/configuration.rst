@@ -9,5 +9,5 @@
 Configuration
 =============
 
-.. automodule:: oarepo_micro_api.config
+.. automodule:: video_repository_api.config
    :members:
