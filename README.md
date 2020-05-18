@@ -1,4 +1,4 @@
-# OARepo Micro API
+# Video Repository API
 
 [![image](https://img.shields.io/travis/CESNET/video-repository-api.svg)](https://travis-ci.org/CESNET/video-repository-api)
 [![image](https://img.shields.io/coveralls/CESNET/video-repository-api.svg)](https://coveralls.io/r/CESNET/video-repository-api)
