@@ -10,6 +10,7 @@
 from __future__ import absolute_import, print_function
 
 from flask_login import current_user
+from flask_taxonomies.marshmallow import TaxonomySchemaV1
 from invenio_jsonschemas import current_jsonschemas
 from invenio_oarepo_dc.marshmallow import DCObjectSchemaV1Mixin
 from invenio_oarepo_invenio_model.marshmallow import InvenioRecordMetadataSchemaV1Mixin
@@ -17,7 +18,7 @@ from invenio_oarepo_multilingual.marshmallow import MultilingualStringSchemaV1
 from invenio_rest.serializer import BaseSchema as Schema
 from invenio_records_rest.schemas import StrictKeysMixin
 from invenio_records_rest.schemas.fields import GenFunction, \
-    PersistentIdentifier
+    PersistentIdentifier, SanitizedUnicode
 from marshmallow import fields, missing, INCLUDE, pre_load
 
 from video_repository_api.records.api import Record
@@ -58,7 +59,8 @@ class CitationSchemaV1(Schema):
 
 
 class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
-                       DCObjectSchemaV1Mixin):
+                       DCObjectSchemaV1Mixin,
+                       StrictKeysMixin):
     """Schema for the record metadata."""
     ALLOWED_SCHEMAS = ACL_ALLOWED_SCHEMAS
     PREFERRED_SCHEMA = ACL_PREFERRED_SCHEMA
@@ -66,6 +68,11 @@ class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
     owners = fields.List(fields.Int(), dump_only=True)
     abstract = MultilingualStringSchemaV1(required=True)
     description = MultilingualStringSchemaV1(required=True)
+    event = fields.Nested(TaxonomySchemaV1(), required=False)
+    difficulty = SanitizedUnicode(required=True)
+    license = SanitizedUnicode(required=True)
+    formats = fields.Nested(TaxonomySchemaV1(many=True), many=True, required=False)
+    source = fields.URL()
 
     @pre_load
     def set_owners(self, in_data, **kwargs):

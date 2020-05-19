@@ -86,26 +86,24 @@ services:
     links:
       - cache
       - es
-# TODO: TBD
-#      - mq
+      - mq
       - db
   # Worker
-# TODO: TBD
-#  worker:
-#    extends:
-#      file: docker-services.yml
-#      service: app
-#    restart: "always"
-#    command: ["celery worker -A invenio_app.celery --loglevel=INFO"]
-#    image: video-repository-api
-#    links:
-#      - cache
-#      - es
-#      - mq
-#      - db
-#    volumes:
-#      - uploaded_data:/opt/invenio/var/instance/data
-#      - archived_data:/opt/invenio/var/instance/archive
+  worker:
+    extends:
+      file: docker-services.yml
+      service: app
+    restart: "always"
+    command: ["celery worker -A invenio_app.celery --loglevel=INFO"]
+    image: video-repository-api
+    links:
+      - cache
+      - es
+      - mq
+      - db
+    volumes:
+      - uploaded_data:/opt/invenio/var/instance/data
+      - archived_data:/opt/invenio/var/instance/archive
   # Monitoring of Celery
   # http://127.0.0.1:5555
 #  flower:
@@ -132,11 +130,10 @@ services:
       file: docker-services.yml
       service: db
   # http://guest:guest@127.0.0.1:15672
-#  mq:
-# TODO: TBD
-#    extends:
-#      file: docker-services.yml
-#      service: mq
+  mq:
+    extends:
+      file: docker-services.yml
+      service: mq
   es:
     extends:
       file: docker-services.yml

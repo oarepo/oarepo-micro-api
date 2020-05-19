@@ -1,4 +1,4 @@
-oarepo[deploy-es7,acls,heartbeat,models,files,includes]~=3.2.1
+oarepo[deploy-es7,acls,heartbeat,models,files,includes,taxonomies]~=3.2.1
 Babel>=2.4.0
 citeproc-py>=0.5.1
 citeproc-py-styles>=0.1.2

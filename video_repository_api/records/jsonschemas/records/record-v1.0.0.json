@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "http://repozitar.cesnet.cz/schemas/records/record-v1.0.0.json",
-  "additionalProperties": true,
+  "additionalProperties": false,
   "title": "CESNET OA Repository Demo Record v1.0.0",
   "type": "object",
   "allOf": [
@@ -13,6 +13,39 @@
     },
     {
       "properties": {
+        "event": {
+          "$ref": "../taxonomy-v1.0.0.json#/definitions/TaxonomyTerm",
+          "description": "https://localhost:5000/api/taxonomies/event/?drilldown=True"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Free text keywords."
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "beginner",
+            "intermediate",
+            "advanced",
+            "hacker"
+          ],
+          "description": "Difficulty of the topic presented in the video record"
+        },
+        "license": {
+          "type": "string",
+          "description": "Video record license"
+        },
+        "formats": {
+          "$ref": "../taxonomy-v1.0.0.json#/definitions/TaxonomyTermArray",
+          "description": "https://localhost:5000/api/taxonomies/format/?drilldown=True"
+        },
+        "source": {
+          "type": "string",
+          "description": "Video record media source URI"
+        },
         "owners": {
           "description": "List of user ids that are owners of record.",
           "type": "array",
@@ -28,6 +61,7 @@
     "title",
     "abstract",
     "creator",
-    "description"
+    "source",
+    "identifier"
   ]
 }

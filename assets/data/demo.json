@@ -1,0 +1,831 @@
+[
+  {
+    "title": [
+      {
+        "lang": "en",
+        "value": "IPv6: from zero to hero"
+      }
+    ],
+    "creator": "Radek Zajíc",
+    "created": "2019-07-09",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/ipv6-seminar-2019/"
+    },
+    "keywords": [ "networking", "ipv6", "geoip" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Pokud protokol IPv6 nemáte nasazen, moc ho neřešíte. Tedy do okamžiku, než vás kontaktuje významný partner s prosbou, zda byste mohli aktivovat IPv6 na serverech, na které chodí jeho zákazníci. Jak ale postupovat? Kde začít, když všechny vaše servery mají nastaveno disable_ipv6=1? Probrali jsme, jaký je stav IPv6 v roce 2019 ve světě GNU/Linuxu. Naťukli jsme podporu IPv6 v moderních nástrojích typu Elasticsearch, Logstash a Kibana. Probali jsme i jak si s IPv6 rozumí Docker, proč není NAT66 dobrá volba a kde tedy získat routovatelný globální IPv6 prefix pro kontejnery. Zmínili jsme i tradiční problém práce s IP adresami, tentokrát v kontextu přiřazování IPv6 adres ke konkrétní IPv6 síti ze seznamu IPv6 sítí, banování nepřizpůsobivých uživatelů ve světě IPv6 a stav GeoIP(v6)."
+      },
+      {
+        "lang": "en",
+        "value": "If you do not have IPv6 deployed, you do not address it much. That is, until a major partner contacts you asking if you could activate IPv6 on the servers that his customers visit. But how to proceed? Where to start when all your servers are set to disable_ipv6 = 1? We discussed the status of IPv6 in 2019 in the GNU / Linux world. We have introduced IPv6 support in modern Elasticsearch, Logstash and Kibana tools. We also discussed how Docker understands IPv6, why NAT66 is not a good choice and where to get a routable global IPv6 container prefix. We also mentioned the traditional problem of working with IP addresses, this time in the context of assigning IPv6 addresses to a specific IPv6 network from the list of IPv6 networks, banning non-adaptable users in the world of IPv6 and the status of GeoIP (v6)."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "kYHlexqHIoU",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=kYHlexqHIoU"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Datová úložiště"
+      }
+    ],
+    "creator": "David Antoš",
+    "created": "2019-02-12",
+    "keywords": [ "storage", "data", "services" ],
+    "difficulty": "advanced",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": ""
+      }
+    ],
+    "contributors": "Milan Daneček,Michal Strnad",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "qUysqpp5eBg",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=qUysqpp5eBg"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "IPv6 v metropolitní síti Praha1.net"
+      }
+    ],
+    "creator": "Tomáš Chott",
+    "created": "2019-07-09",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/ipv6-seminar-2019/"
+    },
+    "keywords": [ "networking", "ipv6", "Praha1.net" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Praha1.net provozuje moderní optickou a bezdrátovou telekomunikační síť s vysokou přenosovou kapacitou. Jedná se o síť typu Ethernet ve standardech 100Mb/s, 1Gb/s a 10Gb/s.Síť Praha1.net pracuje s komunikačními protokoly typu TCP/IP. Tyto světové standardy umožňují snadné připojení jakéhokoliv počítače (s libovolným operačním systémem) do sítě a jeho následné napojení na celosvětovou síť internet.Připojením do sítě Praha1.net tak získáváte jak individuální připojení k internetu, tak možnost připojit k internetu více počítačů, celou počítačovou síť."
+      },
+      {
+        "lang": "en",
+        "value": "Praha1.net operates a modern optical and wireless telecommunications network with a high transmission capacity. It is an Ethernet network in the 100 Mb/s, 1 Gb/s and 10 Gb/s standards.The Praha1.net network works with TCP / IP communication protocols. These world standards allow easy connection of any computer (with any operating system) to the network and its subsequent connection to the worldwide Internet.By connecting to the Praha1.net network, you get both an individual connection to the Internet and the possibility to connect more computers to the Internet, the entire computer network."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "BUdGZ6NQEv8",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=BUdGZ6NQEv8"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Soumrak automatických tunelů pro IPv6"
+      }
+    ],
+    "creator": "Jan Bětík",
+    "created": "2019-07-09",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/ipv6-seminar-2019/"
+    },
+    "keywords": [ "networking", "ipv6", "automation" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Mechanizmy 6to4 a Teredo. Jejich motivace, historie a současnost. Mají tyto technologie v dnešní době ještě smysl?"
+      },
+      {
+        "lang": "en",
+        "value": "6to4 and Teredo mechanisms. Their motivation, history and present. Do these technologies still make sense today?"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "gfJWtCYYpxc",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=gfJWtCYYpxc"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "E-mailové služby na IPv6-only"
+      }
+    ],
+    "creator": "Ondřej Caletka",
+    "created": "2019-07-09",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/ipv6-seminar-2019/"
+    },
+    "keywords": [ "services", "ipv6", "email" ],
+    "difficulty": "intermediate",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Když jsme v roce 2012 spouštěli stránu www.nebezi.cz, umístili jsme na ní i e-mailovou adresu, která byla podobně jako stránka samotná dostupná pouze pomocí IPv6. Ukázalo se, že to nebyl dobrý nápad. Téměř nikdo tehdy nebyl schopen poštu po IPv6 doručit. Od té doby uběhla spousta let. Jak jsou na tom e-mailové služby teď a jak je můžete otestovat??"
+      },
+      {
+        "lang": "en",
+        "value": "When we launched the www.nebezi.cz website in 2012, we also placed an e-mail address on it, which, like the website itself, was only available via IPv6. Turns out it wasn't a good idea. At that time, almost no one was able to deliver mail over IPv6. Many years have passed since then. How are email services doing now and how can you test them?"
+      }
+    ],
+    "contributors": "Pavel Kácha",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "VWXLjdNMIO0",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=VWXLjdNMIO0"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Automatické objevování prefixů pro NAT64"
+      }
+    ],
+    "creator": "Martin Huněk",
+    "created": "2019-07-09",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/ipv6-seminar-2019/"
+    },
+    "keywords": [ "NAT64", "ipv6", "automation" ],
+    "difficulty": "advanced",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Použití NAT64 s sebou často nese nutnost koncového zařízení detekovat, že se v takové síti nachází a jaký prefix místní síť používá. V přednášce jsme shrnuli aktuálně navrhovaná řešení s jejich výhodami a nevýhodami."
+      },
+      {
+        "lang": "en",
+        "value": "Using NAT64 often involves the need for a terminal to detect that it is on such a network and what prefix the local network uses. In the lecture, we summarized the currently proposed solutions with their advantages and disadvantages."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "lFW7TCWX2BE",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=lFW7TCWX2BE"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "GDPR, jako „zaklínadlo“ na vše"
+      }
+    ],
+    "creator": "Jan Kolouch",
+    "created": "2019-05-30",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/seminar-o-gdpr-rok-pote/"
+    },
+    "keywords": [ "GDPR", "legislativa", "procesy" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "V praxi se velmi často setkáváme s tím, že GDPR je zaklínadlem téměř na Vše. Skutečně je to tak? Je GDPR jedinou cestou? V čem GDPR reálně pomohlo a kde naopak některé věci zadrhlo? Využívají toto zaklínadlo jen oprávnění uživatelé? I toto jsou otázky, na které naleznete v přednášce odpověď."
+      },
+      {
+        "lang": "en",
+        "value": "In practice, we very often find that GDPR is a spell for almost everything. Is that really so? Is GDPR the only way? In what way did the GDPR really help and where did it \"stuck\" some things? Do only authorized users use this spell? These are also questions that you will find the answer to in the lecture."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "fw6LwwJ6Py4",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=fw6LwwJ6Py4"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Vědecká data a GDPR"
+      }
+    ],
+    "creator": "Petr Holub",
+    "created": "2019-05-30",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/seminar-o-gdpr-rok-pote/"
+    },
+    "keywords": [ "scientific data", "research data", "GDPR" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Vědecká data jsou specifickým typem dat, který vyžaduje zvláštní ohled z důvodů principů vědecké práce a mezinárodních spoluprací a dostává se mu i zvláštní zřetele přímo v GDPR. Přednáška bude presentovat metodiku pro práci s vědeckými daty, která byla zpracována v rámci centrálního rozvojového projektu mezi všemi veřejnými vysokými školami v roce 2018."
+      },
+      {
+        "lang": "en",
+        "value": "Scientific data is a specific type of data that requires special consideration due to the principles of scientific work and international cooperation, and it also receives special consideration directly in the GDPR. The lecture will present a methodology for working with scientific data, which was developed as part of a central development project among all public universities in 2018."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "yNMlpk9nIbE",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=yNMlpk9nIbE"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Zákon o zpracování osobních údajů: Stručné shrnutí"
+      }
+    ],
+    "creator": "Jakub Míšek",
+    "created": "2019-05-30",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/seminar-o-gdpr-rok-pote/"
+    },
+    "keywords": [ "GDPR", "legislation" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Dne 10. dubna 2019 prezident republiky podepsal návrh zákona o zpracování osobních údajů. Česká republika s bezmála ročním zpožděním konečně zavádí předpis, který upravuje otevřená místa zanechaná Obecným nařízením, a hlavně implementuje tzv. policejní směrnici č. 680/2016. Příspěvek stručně představí nejzásadnější novinky nové právní úpravy s akcentem na souhru s právem na svobodu projevu a oblast zpracování osobních údajů za účelem vědeckého výzkumu."
+      },
+      {
+        "lang": "en",
+        "value": "On April 10, 2019, the President of the Czech Republic signed a law regulation about processing of personal data. With almost a year's delay, the Czech Republic is finally introducing a regulation that regulates the vacancies left by the General Regulation, and mainly implements the so-called Police Directive No. 680/2016. The article briefly presents the most fundamental innovations of the new legislation with an emphasis on the interaction with the right to freedom of expression and the processing of personal data for the purpose of scientific research."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "LAM5meWFEcA",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=LAM5meWFEcA"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Princip odpovědnosti správce osobních údajů"
+      }
+    ],
+    "creator": "Jakub Míšek",
+    "created": "2019-05-30",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/seminar-o-gdpr-rok-pote/"
+    },
+    "keywords": [ "GDPR", "legislation", "regulation" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Princip odpovědnosti správce údajů je jedním ze základních principů zpracování osobních údajů, který je nově výslovně formulován v Obecném nařízení. Jedná se o jednu z nejzásadnějších změn, které Obecné nařízení přineslo, protože akcentuje fakt, že právní úprava ochrany osobních údajů spočívá na principu performativních pravidel a díky tomu umožňuje dostatečnou flexibilitu celého systému ochrany osobních údajů. Příspěvek se zaměří na historii principu odpovědnosti správce, bude analyzovat jeho současnou podobu a zasadí jej do kontextu současné právní úpravy."
+      },
+      {
+        "lang": "en",
+        "value": "The principle of liability of the data administrator is one of the basic principles of personal data processing, which is newly explicitly formulated in the General Regulation. This is one of the most fundamental changes brought by the General Regulation, as it emphasizes the fact that the legal regulation of personal data protection is based on the principle of performative rules and thus allows sufficient flexibility of the entire system of personal data protection. The paper will focus on the history of the principle of liability of the administrator, will analyze its current form and place it in the context of current legislation."
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "C2DaMGbEe-Q",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=C2DaMGbEe-Q&list="
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "GDPR a technická data (logy, systém pro sdílení informací, CTI …)"
+      }
+    ],
+    "creator": "Jan Kolouch",
+    "created": "2019-05-30",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/seminare/seminar-o-gdpr-rok-pote/"
+    },
+    "keywords": [ "GDPR", "legislation", "metadata" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Prezentace se zaměří na propojení světa ICT, GDPR a uživatelské digitální stopy ve vztahu k novým možnostem ochrany, jakož i povinnosti informování uživatele o tom, kde a jak jsou zpracovávány jeho osobní údaje. Představeny budou některé technické oblasti, kde je možné nalézt osobní údaje, jakož i pravidla, která by měl správce ve vztahu k těmto pravidlům aplikovat. Součástí přednášky bude i prezentace tvorby některých interních dokumentů souvisejících s danou oblastí v rámci sdružení CESNET."
+      },
+      {
+        "lang": "en",
+        "value": "The presentation will focus on the interconnection of the world of ICT, GDPR and digital footprints of user in relation to new protection options, as well as the obligation to inform the user where and how his personal data is processed. Some technical areas where personal data can be found will be presented, as well as the rules that the administrator should apply in relation to these rules. The lecture will also include a presentation of the creation of some internal documents related to the area within the CESNET association."
+      }
+    ],
+    "contributors": "Andrea Kropáčová",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "9Tf6MehgE1Y",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=9Tf6MehgE1Y&list="
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Síťové služby, monitoring"
+      }
+    ],
+    "creator": "Tomáš Košňar",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "networking", "monitoring", "administration" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přehledová přednáška na téma: Síťové služby, monitoring"
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: Network services, monitoring"
+      }
+    ],
+    "contributors": "Andrea Kropáčová",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "YXyOwIvvFtI",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=YXyOwIvvFtI"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Fotonické služby e-infrastruktury a systém Czech Light"
+      }
+    ],
+    "creator": "Jan Radil",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "fotonic", "networking", "CzechLight" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přehledová přednáška na téma: Fotonické služby e-infrastruktury a systém Czech Light"
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: Photonic e-infrastructure services and the Czech Light system"
+      }
+    ],
+    "contributors": "Lada Altmannová",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "fNLzZo8WBjQ",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=fNLzZo8WBjQ"
+  },
+  {
+    "title": [
+      {
+        "lang": "en",
+        "value": "The changing role of NREN’s in tomorrow’s research and education ecosystems"
+      }
+    ],
+    "creator": "Andreas Dudler",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "NREN", "networking", "EU" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": ""
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: The changing role of NREN’s in tomorrow’s research and education ecosystems"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "en",
+    "identifier": "R1xsc51MOyI",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=R1xsc51MOyI"
+  },
+  {
+    "title": [
+      {
+        "lang": "en",
+        "value": "Global R&E Network Collaboration – taking it to the next level"
+      }
+    ],
+    "creator": "Erik-Jan Bos",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "NREN", "networking", "collaboration" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": ""
+      },
+      {
+        "lang": "en",
+        "value": "Global R&E Network Collaboration – taking it to the next level"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "en",
+    "identifier": "MOm8KKNPzio",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=MOm8KKNPzio"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "CESNET a věda"
+      }
+    ],
+    "creator": "Helmut Sverenyák",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "CESNET", "networking", "science" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přednáška na téma: CESNET a věda"
+      },
+      {
+        "lang": "en",
+        "value": "Presentation with the topic: CESNET and Science"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "en",
+    "identifier": "CBz4Wn4Tp3U",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=CBz4Wn4Tp3U"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Metacentrum"
+      }
+    ],
+    "creator": "Miroslav Ruda",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "Metaccentrum", "HPC", "services" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přehledová přednáška na téma: Metacentrum"
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: Metacentrum"
+      }
+    ],
+    "contributors": "Zdeněk Šustr",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "nZ8SmBEzaFo",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=nZ8SmBEzaFo"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Digitální identity"
+      }
+    ],
+    "creator": "Jiří Bořík",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "identity", "federation", "services" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přehledová přednáška na téma: Digitální identity"
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: Digital Indentities"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "qCSijjJEj9g",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=qCSijjJEj9g"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Multimédia"
+      }
+    ],
+    "creator": "Jan Růžička",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "multimedia", "call", "teleconferencing" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přehledová přednáška na téma: Multimédia"
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: Multimedia"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "AjkXCNF_W8Q",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=AjkXCNF_W8Q"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Bezpečnost"
+      }
+    ],
+    "creator": "Andrea Kropáčová",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "security", "cyberspace", "legislation" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Přehledová přednáška na téma: Bezpečnost"
+      },
+      {
+        "lang": "en",
+        "value": "Overview session with the topic: Security"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "NM9TFGdHHpg",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=NM9TFGdHHpg"
+  },
+  {
+    "title": [
+      {
+        "lang": "en",
+        "value": "GÉANT Network Evolution"
+      }
+    ],
+    "creator": "Mian Usman,",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "NREN", "networking", "collaboration" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": ""
+      },
+      {
+        "lang": "en",
+        "value": "GÉANT Network Evolution"
+      }
+    ],
+    "contributors": "",
+    "license": "CC BY",
+    "language": "en",
+    "identifier": "QnkotaylFZA",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=QnkotaylFZA"
+  },
+  {
+    "title": [
+      {
+        "lang": "cs",
+        "value": "Nástroje pro obranu proti útokůn na páteřních směrovačích"
+      }
+    ],
+    "creator": "Jiří Vratný",
+    "created": "2019-02-11",
+    "event": {
+      "$ref": "https://127.0.0.1:5000/api/taxonomies/event/konference/konference-e-infrastruktury-cesnet-2019/"
+    },
+    "keywords": [ "internet traffic", "routers" ],
+    "difficulty": "beginner",
+    "abstract": [
+      {
+        "lang": "cs",
+        "value": "Tématická přednáška na téma: Nástroje pro obranu proti útokůn na páteřních směrovačích"
+      },
+      {
+        "lang": "en",
+        "value": "Thematic session with the topic: Tools for defense against attacks on backbone routers"
+      }
+    ],
+    "contributors": "Petr Adamec, Josef Verich",
+    "license": "CC BY",
+    "language": "cs",
+    "identifier": "DcPBwaE8baI",
+    "formats": [
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/audio/m4a-48k/"
+      },
+      {
+        "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
+      }
+    ],
+    "source": "https://www.youtube.com/watch?v=DcPBwaE8baI"
+  }
+]

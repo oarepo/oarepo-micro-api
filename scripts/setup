@@ -10,4 +10,6 @@ set -e
 
 ADMIN_PASSWORD=${OAREPO_ADMIN_PASSWORD:-OARepoAdm1n}
 
-oarepo setup "$ADMIN_PASSWORD"
+export FLASK_APP=video_repository_api/wsgi.py
+
+oarepo setup "$ADMIN_PASSWORD" --drop-taxonomies --verbose

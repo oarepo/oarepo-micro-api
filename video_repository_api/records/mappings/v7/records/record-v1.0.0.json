@@ -38,9 +38,9 @@
     }
   },
   "mappings": {
-    "dynamic": true,
-    "date_detection": true,
-    "numeric_detection": true,
+    "dynamic": false,
+    "date_detection": false,
+    "numeric_detection": false,
     "allOf": [
       {
         "type": "invenio-v1.0.0.json#/InvenioRecord"
@@ -50,6 +50,24 @@
       }
     ],
     "properties": {
+      "event": {
+        "type": "taxonomy-v1.0.0.json#/TaxonomyTerm"
+      },
+      "keywords": {
+        "type": "keyword"
+      },
+      "difficulty": {
+        "type": "keyword"
+      },
+      "license": {
+        "type": "keyword"
+      },
+      "formats": {
+        "type": "taxonomy-v1.0.0.json#/TaxonomyTerm"
+      },
+      "source": {
+        "type": "keyword"
+      },
       "owners": {
         "type": "integer"
       },

@@ -6,15 +6,14 @@
 # under the terms of the MIT License; see LICENSE file for more details.
 
 """CLI for Invenio App ILS."""
+import json
 import random
-from uuid import uuid4
 
 import click
-import lorem
-import names
 import redis
 from flask.cli import with_appcontext
 from invenio_accounts.models import User
+from invenio_app.factory import create_api
 from invenio_db import db
 from invenio_indexer.api import RecordIndexer
 from invenio_pidstore.models import PIDStatus, PersistentIdentifier
@@ -26,8 +25,16 @@ from video_repository_api.records.api import Record
 from video_repository_api.records.constants import ACL_PREFERRED_SCHEMA
 
 
+def create_pid():
+    """Create a new persistent identifier."""
+    return RecordIdProviderV2.create().pid.pid_value
+
+
 def minter(pid_type, pid_field, record):
     """Mint the given PID for the given record."""
+    if pid_field not in record.keys():
+        record[pid_field] = create_pid()
+
     pid = PersistentIdentifier.get(
         pid_type="recid",
         pid_value=record[pid_field]
@@ -57,9 +64,9 @@ def random_lang():
 class Holder(object):
     """Holds generated data."""
 
-    def __init__(self, total_items):
+    def __init__(self):
         """Constructor."""
-        self.items = {"objs": [], "total": total_items}
+        self.items = {"objs": [], "total": 0}
 
     def pids(self, collection, pid_field):
         """Get a list of PIDs for a collection."""
@@ -74,10 +81,6 @@ class Generator(object):
         self.holder = holder
         # self.minter = minter
 
-    def create_pid(self):
-        """Create a new persistent identifier."""
-        return RecordIdProviderV2.create().pid.pid_value
-
     def _persist(self, pid_type, pid_field, record):
         """Mint PID and store in the db."""
         minter(pid_type, pid_field, record)
@@ -85,33 +88,25 @@ class Generator(object):
         return record
 
 
-class ItemGenerator(Generator):
-    """Item Generator."""
+class DataLoader(Generator):
+    """Demo Data Loader."""
 
-    def generate(self):
-        """Generate."""
-        size = self.holder.items["total"]
-        objs = [
-            {
-                "owners": [-1],
-                "pid": self.create_pid(),
-                "identifier": "{}".format(uuid4()),
-                "abstract": [{"lang": random_lang(), "value": lorem.text()}],
-                "title": [{"lang": random_lang(), "value": lorem.sentence()}],
-                "description": [{"lang": random_lang(), "value": lorem.paragraph()}],
-                "creator": names.get_full_name(random.choice(['male', 'female'])),
-                "contributor": names.get_full_name(random.choice(['male', 'female'])),
-                "language": random_lang(),
-            }
-            for pid in range(1, size + 1)
-        ]
+    def load(self, file):
+        """Load records from file."""
+        with open(file, 'r') as source:
+            sdata = source.read()
+
+        objs = json.loads(sdata)
 
         self.holder.items["objs"] = objs
+        self.holder.items["total"] = len(objs)
 
     def persist(self):
         """Persist."""
         recs = []
         for obj in self.holder.items["objs"]:
+            # Set System owner for each record
+            obj['owners'] = [-1]
             rec = self._persist("recid", "pid", Record.create(obj))
             recs.append(rec)
         db.session.commit()
@@ -124,23 +119,20 @@ def demo():
 
 
 @demo.command()
-@click.option("--items", "n_items", default=50)
+@click.argument('datafile', default='./assets/data/demo.json')
 @with_appcontext
-def data(n_items):
+def data(datafile):
     """Insert demo data."""
-    click.secho("Generating demo data", fg="yellow")
+    click.secho("Importing demo data from {}".format(datafile), fg="yellow")
 
     indexer = RecordIndexer()
-    holder = Holder(
-        total_items=n_items,
-    )
+    holder = Holder()
 
-    click.echo("Creating items...")
-    items_generator = ItemGenerator(holder)
-    items_generator.generate()
-    rec_items = items_generator.persist()
+    loader = DataLoader(holder)
+    loader.load(datafile)
+    rec_items = loader.persist()
     for rec in rec_items:
-        # TODO: bulk index when we have the queue
+        # TODO: bulk index when we have the queue in k8s deployment
         indexer.index(rec)
 
     current_search.flush_and_refresh(index="*")
@@ -148,18 +140,45 @@ def data(n_items):
 
 @click.command()
 @click.argument('admin_password')
-@click.option("--recreate-db", is_flag=True, help="Recreating DB.")
 @click.option(
-    "--skip-demo-data", is_flag=True, help="Skip creating demo data."
+    "--recreate-db",
+    is_flag=True,
+    help="Recreating DB."
+)
+@click.option(
+    "--drop-taxonomies",
+    is_flag=True,
+    help="Drop taxonomy data."
+)
+@click.option(
+    "--skip-demo-data",
+    is_flag=True,
+    help="Skip creating demo data."
+)
+@click.option(
+    "--skip-taxonomy-import",
+    is_flag=True,
+    help="Skip import of taxonomy data."
+)
+@click.option(
+    "--taxonomies",
+    help="Path to a directory with taxonomy files",
+    default="./assets/taxonomy"
 )
 @click.option(
     "--skip-file-location",
     is_flag=True,
     help="Skip creating file location."
 )
-@click.option("--verbose", is_flag=True, help="Verbose output.")
+@click.option(
+    "--verbose",
+    is_flag=True,
+    help="Verbose output."
+)
 @with_appcontext
-def setup(admin_password, recreate_db, skip_demo_data, skip_file_location, verbose):
+def setup(admin_password, recreate_db, skip_demo_data,
+          skip_file_location, drop_taxonomies,
+          skip_taxonomy_import, verbose, taxonomies='./assets/taxonomy'):
     """OARepo setup command."""
     from flask import current_app
     from invenio_base.app import create_cli
@@ -173,7 +192,10 @@ def setup(admin_password, recreate_db, skip_demo_data, skip_file_location, verbo
     click.secho("redis cache cleared...", fg="red")
 
     cli = create_cli()
-    runner = current_app.test_cli_runner()
+
+    # Important: force API app on CLI context for proper URL generation
+    cli.create_app = create_api
+    runner = create_api().test_cli_runner()
 
     def run_command(command, catch_exceptions=False):
         click.secho("oarepo {}...".format(command), fg="green")
@@ -181,16 +203,19 @@ def setup(admin_password, recreate_db, skip_demo_data, skip_file_location, verbo
         if verbose:
             click.secho(res.output)
 
+    # Print all routes considered for URL generation
+    run_command('routes')
+
     # Remove and create db and indexes
     if recreate_db:
-        run_command("db destroy --yes-i-know", catch_exceptions=True)
+        run_command("db destroy --yes-i-know", catch_exceptions=False)
         run_command("db init")
     else:
         run_command("db drop --yes-i-know")
     run_command("db create")
     run_command("index destroy --force --yes-i-know")
     run_command("index init --force")
-    # run_command("index queue init purge")
+    run_command("index queue init purge")
 
     # Create roles to restrict access
     run_command("roles create admin")
@@ -214,8 +239,33 @@ def setup(admin_password, recreate_db, skip_demo_data, skip_file_location, verbo
     # Create ACLs index for preferred SCHEMA
     run_command("invenio invenio_explicit_acls prepare {}".format(ACL_PREFERRED_SCHEMA))
 
-    # Generate demo data
-    if not skip_demo_data:
-        run_command("demo data")
+    # Drop taxonomy data
+    if drop_taxonomies:
+        taxo_list = runner.invoke(cli, 'taxonomies list', catch_exceptions=False)
+        click.secho("oarepo dropping existing taxonomies {}".format(taxo_list.output), fg="yellow")
+        for tax in [t for t in taxo_list.output.splitlines() if t[0] not in [' ', '*']]:
+            click.secho("oarepo deleting taxonomy {}".format(tax), fg="yellow")
+            run_command('taxonomies delete {}'.format(tax))
+
+    # Import taxonomies
+    if not skip_taxonomy_import:
+        import os
+        click.secho("oarepo importing taxonomies from {}".format(taxonomies), fg="green")
+        for tax_file in os.listdir(taxonomies):
+            if tax_file.endswith('xlsx'):
+                tax_path = os.path.join(taxonomies, tax_file)
+                click.secho("oarepo importing taxonomy {}".format(tax_path), fg="green")
+                if tax_file.startswith('event'):
+                    run_command('taxonomies import {} --str web --str organizer --str startDate --str endDate --bool '
+                                'selectable --drop'.format(tax_path))
+                elif tax_file.startswith('format'):
+                    run_command('taxonomies import {} --str resolution --str spec --bool selectable --drop'
+                                .format(tax_path))
+
+        click.secho("oarepo setting all-read permission on taxonomies", fg="green")
+        run_command('taxonomies all-read')
+        # TODO: what about taxonomy modify?
+
+        run_command('demo data')
 
     click.secho("oarepo setup finished successfully", fg="blue")
