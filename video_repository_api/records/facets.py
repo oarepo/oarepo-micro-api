@@ -27,5 +27,9 @@ def nested_facet(nested_path, agg_path, order='desc', size=100):
     }
 
 
+def taxonomy_facet(path, order='desc', size=100):
+    return nested_facet("%s.title" % path, "%s.title.value.keyword" % path, order, size)
+
+
 def title_lang_facet(order='desc', size=100):
     return nested_facet("title", "title.lang", order, size)

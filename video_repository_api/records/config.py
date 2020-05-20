@@ -19,8 +19,9 @@ from invenio_search import RecordsSearch
 from invenio_search.api import DefaultFilter
 
 from video_repository_api.records.api import Record
-from video_repository_api.records.facets import term_facet, title_lang_facet
-from video_repository_api.records.filters import language_aware_match_filter, nested_terms_filter, owned_filter
+from video_repository_api.records.facets import term_facet, title_lang_facet, taxonomy_facet
+from video_repository_api.records.filters import language_aware_match_filter, nested_terms_filter, owned_filter, \
+    language_aware_terms_filter
 from video_repository_api.records.permissions import authenticated_permission_factory, admin_permission_factory, \
     owner_permission_filter, owner_permission_factory
 
@@ -57,6 +58,10 @@ FILTERS = {
     'title': language_aware_match_filter('title'),
     'creator': terms_filter('creator.keyword'),
     'owned': owned_filter('owners'),
+    'difficulty': terms_filter('difficulty.keyword'),
+    'license': terms_filter('license.keyword'),
+    'event.title.value.keyword': language_aware_terms_filter('event.title'),
+    'formats.title.value.keyword': language_aware_terms_filter('formats.title'),
     'title.lang': nested_terms_filter('title', 'lang', lambda field: terms_filter(f'{field}')),
 }
 
@@ -157,6 +162,10 @@ RECORDS_REST_FACETS = {
     RECORDS_SEARCH_INDEX: {
         'aggs': {
             'creator': term_facet('creator.keyword'),
+            'difficulty': term_facet('difficulty'),
+            'event': taxonomy_facet('event'),
+            'license': term_facet('license'),
+            'formats': taxonomy_facet('formats'),
             'lang': title_lang_facet(),
         },
         'post_filters': FILTERS,

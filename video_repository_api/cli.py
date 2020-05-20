@@ -208,7 +208,7 @@ def setup(admin_password, recreate_db, skip_demo_data,
 
     # Remove and create db and indexes
     if recreate_db:
-        run_command("db destroy --yes-i-know", catch_exceptions=False)
+        run_command("db destroy --yes-i-know", catch_exceptions=True)
         run_command("db init")
     else:
         run_command("db drop --yes-i-know")

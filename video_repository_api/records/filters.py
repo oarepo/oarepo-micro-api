@@ -38,6 +38,11 @@ def owned_filter(field):
     return inner
 
 
+def language_aware_terms_filter(field):
+    # TODO: add filter for the current language
+    return nested_terms_filter(field, 'value.keyword')
+
+
 def language_aware_match_filter(field):
     return nested_filter(field, 'value', nested_query='match')
 
