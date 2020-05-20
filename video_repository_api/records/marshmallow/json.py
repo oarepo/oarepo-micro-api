@@ -68,6 +68,7 @@ class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
     owners = fields.List(fields.Int(), dump_only=True)
     abstract = MultilingualStringSchemaV1(required=True)
     description = MultilingualStringSchemaV1(required=True)
+    contributors = SanitizedUnicode(required=False)
     event = fields.Nested(TaxonomySchemaV1(), required=False)
     difficulty = SanitizedUnicode(required=True)
     license = SanitizedUnicode(required=True)

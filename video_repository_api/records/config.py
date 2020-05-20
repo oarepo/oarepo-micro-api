@@ -58,7 +58,7 @@ FILTERS = {
     'title': language_aware_match_filter('title'),
     'creator': terms_filter('creator.keyword'),
     'owned': owned_filter('owners'),
-    'difficulty': terms_filter('difficulty.keyword'),
+    'difficulty': terms_filter('difficulty'),
     'license': terms_filter('license.keyword'),
     'event.title.value.keyword': language_aware_terms_filter('event.title'),
     'formats.title.value.keyword': language_aware_terms_filter('formats.title'),
