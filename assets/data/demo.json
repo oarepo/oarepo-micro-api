@@ -35,7 +35,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=kYHlexqHIoU"
+    "source": "https://www.youtube.com/embed/watch?v=kYHlexqHIoU"
   },
   {
     "title": [
@@ -66,7 +66,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=qUysqpp5eBg"
+    "source": "https://www.youtube.com/embed/watch?v=qUysqpp5eBg"
   },
   {
     "title": [
@@ -104,7 +104,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=BUdGZ6NQEv8"
+    "source": "https://www.youtube.com/embed/watch?v=BUdGZ6NQEv8"
   },
   {
     "title": [
@@ -142,7 +142,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=gfJWtCYYpxc"
+    "source": "https://www.youtube.com/embed/watch?v=gfJWtCYYpxc"
   },
   {
     "title": [
@@ -180,7 +180,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=VWXLjdNMIO0"
+    "source": "https://www.youtube.com/embed/watch?v=VWXLjdNMIO0"
   },
   {
     "title": [
@@ -218,7 +218,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=lFW7TCWX2BE"
+    "source": "https://www.youtube.com/embed/watch?v=lFW7TCWX2BE"
   },
   {
     "title": [
@@ -256,7 +256,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=fw6LwwJ6Py4"
+    "source": "https://www.youtube.com/embed/watch?v=fw6LwwJ6Py4"
   },
   {
     "title": [
@@ -294,7 +294,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=yNMlpk9nIbE"
+    "source": "https://www.youtube.com/embed/watch?v=yNMlpk9nIbE"
   },
   {
     "title": [
@@ -332,7 +332,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=LAM5meWFEcA"
+    "source": "https://www.youtube.com/embed/watch?v=LAM5meWFEcA"
   },
   {
     "title": [
@@ -370,7 +370,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=C2DaMGbEe-Q&list="
+    "source": "https://www.youtube.com/embed/watch?v=C2DaMGbEe-Q&list="
   },
   {
     "title": [
@@ -408,7 +408,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=9Tf6MehgE1Y&list="
+    "source": "https://www.youtube.com/embed/watch?v=9Tf6MehgE1Y&list="
   },
   {
     "title": [
@@ -446,7 +446,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=YXyOwIvvFtI"
+    "source": "https://www.youtube.com/embed/watch?v=YXyOwIvvFtI"
   },
   {
     "title": [
@@ -484,7 +484,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=fNLzZo8WBjQ"
+    "source": "https://www.youtube.com/embed/watch?v=fNLzZo8WBjQ"
   },
   {
     "title": [
@@ -522,7 +522,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=R1xsc51MOyI"
+    "source": "https://www.youtube.com/embed/watch?v=R1xsc51MOyI"
   },
   {
     "title": [
@@ -560,7 +560,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=MOm8KKNPzio"
+    "source": "https://www.youtube.com/embed/watch?v=MOm8KKNPzio"
   },
   {
     "title": [
@@ -598,7 +598,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=CBz4Wn4Tp3U"
+    "source": "https://www.youtube.com/embed/watch?v=CBz4Wn4Tp3U"
   },
   {
     "title": [
@@ -636,7 +636,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=nZ8SmBEzaFo"
+    "source": "https://www.youtube.com/embed/watch?v=nZ8SmBEzaFo"
   },
   {
     "title": [
@@ -674,7 +674,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=qCSijjJEj9g"
+    "source": "https://www.youtube.com/embed/watch?v=qCSijjJEj9g"
   },
   {
     "title": [
@@ -712,7 +712,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=AjkXCNF_W8Q"
+    "source": "https://www.youtube.com/embed/watch?v=AjkXCNF_W8Q"
   },
   {
     "title": [
@@ -750,7 +750,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=NM9TFGdHHpg"
+    "source": "https://www.youtube.com/embed/watch?v=NM9TFGdHHpg"
   },
   {
     "title": [
@@ -788,7 +788,7 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=QnkotaylFZA"
+    "source": "https://www.youtube.com/embed/watch?v=QnkotaylFZA"
   },
   {
     "title": [
@@ -826,6 +826,6 @@
         "$ref": "https://127.0.0.1:5000/api/taxonomies/format/video/mp4-720p/"
       }
     ],
-    "source": "https://www.youtube.com/watch?v=DcPBwaE8baI"
+    "source": "https://www.youtube.com/embed/watch?v=DcPBwaE8baI"
   }
 ]
