@@ -58,6 +58,20 @@ class CitationSchemaV1(Schema):
         return 'article'
 
 
+class EventSchemaV1(TaxonomySchemaV1):
+    web = fields.URL()
+    organizer = SanitizedUnicode()
+    startDate = SanitizedUnicode()
+    endDate = SanitizedUnicode()
+    selectable = fields.Boolean(default=True)
+
+
+class FormatSchemaV1(TaxonomySchemaV1):
+    resolution = SanitizedUnicode()
+    spec = SanitizedUnicode()
+    selectable = fields.Boolean(default=True)
+
+
 class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
                        DCObjectSchemaV1Mixin,
                        StrictKeysMixin):
@@ -69,10 +83,10 @@ class MetadataSchemaV1(InvenioRecordMetadataSchemaV1Mixin,
     abstract = MultilingualStringSchemaV1(required=True)
     description = MultilingualStringSchemaV1(required=True)
     contributors = SanitizedUnicode(required=False)
-    event = fields.Nested(TaxonomySchemaV1(), required=False)
+    event = fields.Nested(EventSchemaV1(), required=False)
     difficulty = SanitizedUnicode(required=True)
     license = SanitizedUnicode(required=True)
-    formats = fields.Nested(TaxonomySchemaV1(many=True), many=True, required=False)
+    formats = fields.Nested(FormatSchemaV1(many=True), many=True, required=False)
     source = fields.URL()
 
     @pre_load
