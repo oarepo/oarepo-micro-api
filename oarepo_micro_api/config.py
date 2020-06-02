@@ -17,6 +17,8 @@ from __future__ import absolute_import, print_function
 
 # TODO: enable for iiif previews
 # from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
+from datetime import timedelta
+
 from invenio_cesnet_proxyidp.remote import ProxyIDPAuthRemote
 
 
@@ -82,23 +84,22 @@ SEARCH_ELASTIC_HOSTS = [dict(host=h, **ES_PARAMS) for h in
 
 # Celery configuration
 # ====================
-# TODO: add celery
-# BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 #: URL of message broker for Celery (default is RabbitMQ).
-# CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 #: URL of backend for result storage (default is Redis).
-# CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'
 #: Scheduled tasks configuration (aka cronjobs).
-# CELERY_BEAT_SCHEDULE = {
-#     'indexer': {
-#         'task': 'invenio_indexer.tasks.process_bulk_queue',
-#         'schedule': timedelta(minutes=5),
-#     },
-#     'accounts': {
-#         'task': 'invenio_accounts.tasks.clean_session_table',
-#         'schedule': timedelta(minutes=60),
-#     },
-# }
+CELERY_BEAT_SCHEDULE = {
+    'indexer': {
+        'task': 'invenio_indexer.tasks.process_bulk_queue',
+        'schedule': timedelta(minutes=5),
+    },
+    'accounts': {
+        'task': 'invenio_accounts.tasks.clean_session_table',
+        'schedule': timedelta(minutes=60),
+    },
+}
 
 # Database
 # ========
