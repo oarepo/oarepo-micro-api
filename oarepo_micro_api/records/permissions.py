@@ -75,9 +75,9 @@ def files_permission_factory(obj, action=None):
     if isinstance(obj, Bucket):
         record = record_from_bucket(obj.id)
     elif isinstance(obj, ObjectVersion):
-        pass
+        record = record_from_bucket(obj.bucket_id)
     elif isinstance(obj, MultipartObject):
-        pass
+        record = record_from_bucket(obj.bucket_id)
 
     for need in actionNeed.explicit_needs:
         if need.value in _read_actions:
