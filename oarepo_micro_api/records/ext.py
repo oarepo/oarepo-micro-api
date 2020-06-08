@@ -9,6 +9,7 @@
 
 from __future__ import absolute_import, print_function
 
+from invenio_files_rest.signals import file_deleted, file_uploaded
 from invenio_indexer.signals import before_record_index
 
 from . import config, indexer
@@ -61,3 +62,5 @@ class OARepoMicroAPI(object):
             indexer.indexer_receiver,
             sender=app,
             index="records-record-v1.0.0")
+        file_deleted.connect(update_record_files_async, weak=False)
+        file_uploaded.connect(update_record_files_async, weak=False)

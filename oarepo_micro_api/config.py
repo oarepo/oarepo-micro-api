@@ -100,6 +100,10 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'invenio_accounts.tasks.clean_session_table',
         'schedule': timedelta(minutes=60),
     },
+    'file-checks': {
+       'task': 'invenio_files_rest.tasks.schedule_checksum_verification',
+       'schedule': timedelta(hours=24),
+    }
 }
 
 # Database
@@ -159,6 +163,8 @@ APP_DEFAULT_SECURE_HEADERS['content_security_policy'] = {
     'font-src': ["'self'", "data:", "https://fonts.gstatic.com",
                  "https://fonts.googleapis.com"],
 }
+
+REST_ENABLE_CORS = True
 
 PROXYIDP_CONFIG = dict(
     base_url='https://login.cesnet.cz/oidc/',

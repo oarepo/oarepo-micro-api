@@ -198,5 +198,5 @@ RECORDS_FILES_REST_ENDPOINTS = {
 """Records files integration."""
 
 FILES_REST_PERMISSION_FACTORY = \
-    'oarepo_micro_api.records.permissions:admin_permission_factory'
+    'oarepo_micro_api.records.permissions:files_permission_factory'
 """Files-REST permissions factory."""
