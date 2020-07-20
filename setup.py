@@ -36,27 +36,8 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
-        'console_scripts': [
-            'oarepo = invenio_app.cli:cli',
-        ],
-        "invenio_base.api_apps": [
-            "oarepo_micro_api = oarepo_micro_api.records.ext:OARepoMicroAPI",
-        ],
-        "flask.commands": [
-            "demo = oarepo_micro_api.cli:demo",
-            "setup = oarepo_micro_api.cli:setup",
-        ],
         'invenio_config.module': [
             'oarepo_micro_api = oarepo_micro_api.config',
-        ],
-        'invenio_i18n.translations': [
-            'messages = oarepo_micro_api',
-        ],
-        'invenio_jsonschemas.schemas': [
-            'records = oarepo_micro_api.records.jsonschemas'
-        ],
-        'invenio_search.mappings': [
-            'records = oarepo_micro_api.records.mappings',
         ],
     },
     classifiers=[

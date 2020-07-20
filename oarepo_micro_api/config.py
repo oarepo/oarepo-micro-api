@@ -50,7 +50,7 @@ APPLICATION_ROOT = '/api/'
 # Email configuration
 # ===================
 #: Email address for support.
-SUPPORT_EMAIL = "du-support@cesnet.cz"
+SUPPORT_EMAIL = "no-reply@oarepo.org"
 #: Disable email sending by default.
 MAIL_SUPPRESS_SEND = True
 
@@ -112,11 +112,6 @@ CELERY_BEAT_SCHEDULE = {
 SQLALCHEMY_DATABASE_URI = \
     'postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@localhost/oarepo-micro-api'
 
-# JSONSchemas
-# ===========
-#: Hostname used in URLs for local JSONSchemas.
-JSONSCHEMAS_HOST = 'repozitar.cesnet.cz'
-
 # Flask configuration
 # ===================
 # See details on
@@ -134,10 +129,6 @@ SESSION_COOKIE_SECURE = True
 #: should be set to the correct host and it is strongly recommended to only
 #: route correct hosts to the application.
 APP_ALLOWED_HOSTS = [h for h in os.getenv('OAREPO_APP_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')]
-
-# OAI-PMH
-# =======
-OAISERVER_ID_PREFIX = 'oai:repozitar.cesnet.cz:'
 
 # Previewers
 # ==========
@@ -165,19 +156,6 @@ APP_DEFAULT_SECURE_HEADERS['content_security_policy'] = {
 }
 
 REST_ENABLE_CORS = True
-
-PROXYIDP_CONFIG = dict(
-    base_url='https://login.cesnet.cz/oidc/',
-    consumer_key=os.getenv('PROXYIDP_CONSUMER_KEY', 'CHANGE_ME'),
-    consumer_secret=os.getenv('PROXYIDP_CONSUMER_SECRET', 'CHANGE_ME'),
-    scope=('openid', 'email', 'profile',)
-)
-
-OAUTHCLIENT_REMOTE_APPS = dict(
-    proxyidp=ProxyIDPAuthRemote().remote_app()
-)
-
-INVENIO_OAREPO_UI_LOGIN_URL = '/api/openid/login/proxyidp'
 
 USERPROFILES_EXTEND_SECURITY_FORMS = True
 SECURITY_SEND_REGISTER_EMAIL = False
