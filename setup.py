@@ -24,7 +24,8 @@ install_requires = [
     'uwsgi-tools>=1.1.1',
     'uwsgitop>=0.11',
     'oarepo_heartbeat>=1.0.0',
-    'invenio-app'
+    'invenio-app',
+    'invenio-search'
 ]
 
 tests_require = [
