@@ -7,6 +7,6 @@
 # under the terms of the MIT License; see LICENSE file for more details.
 
 pydocstyle oarepo_micro_api tests && \
-isort -c -df && \
+isort -c -df oarepo_micro_api && \
 check-manifest --ignore ".travis-*" && \
 python setup.py test
