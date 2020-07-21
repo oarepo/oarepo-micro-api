@@ -35,7 +35,8 @@ tests_require = [
     'check-manifest',
     'pytest-coverage',
     'pytest-pep8',
-    'pytest-flask>=0.15.1'
+    'pytest-flask>=0.15.1',
+    'pytest-invenio'
 ]
 
 setup_requires = [
