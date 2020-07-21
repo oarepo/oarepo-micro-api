@@ -15,12 +15,12 @@ You overwrite and set instance-specific configuration by either:
 
 from __future__ import absolute_import, print_function
 
+import os
 # TODO: enable for iiif previews
 # from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
 from datetime import timedelta
 
 from invenio_app.config import APP_DEFAULT_SECURE_HEADERS
-from invenio_cesnet_proxyidp.remote import ProxyIDPAuthRemote
 
 
 def _(x):
@@ -71,7 +71,6 @@ ACCOUNTS_USERINFO_HEADERS = True
 
 # Elasticsearch
 # =============
-import os
 
 ES_USER = os.getenv('OAREPO_ES_USER', None)
 ES_PASSWORD = os.getenv('OAREPO_ES_PASSWORD', None)
@@ -101,8 +100,8 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': timedelta(minutes=60),
     },
     'file-checks': {
-       'task': 'invenio_files_rest.tasks.schedule_checksum_verification',
-       'schedule': timedelta(hours=24),
+        'task': 'invenio_files_rest.tasks.schedule_checksum_verification',
+        'schedule': timedelta(hours=24),
     }
 }
 

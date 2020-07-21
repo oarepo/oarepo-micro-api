@@ -7,55 +7,29 @@
 
 """Test record and files."""
 
-import json
-
 from flask import url_for
-from invenio_base import create_cli
-from invenio_search import current_search
 from webtest import AppError
 
 
-def _run_command(runner, command, catch_exceptions=False):
-    cli = create_cli()
-    return runner.invoke(cli, command, catch_exceptions=catch_exceptions)
-
-
-def setup_environment(runner):
-    _run_command(runner, "db destroy --yes-i-know")
-    _run_command(runner, "db init")
-    _run_command(runner, "index destroy --force --yes-i-know")
-    _run_command(runner, "index init --force")
-
-
 def test_readiness_probes(app, wsgi):
-    setup_environment(app.test_cli_runner())
-    url = url_for('oarepo-heartbeat.liveliness', _external=True) \
-        .replace('http', 'https')
+    url = url_for('oarepo-heartbeat.liveliness', _external=True)
+    assert url.startswith('http://localhost/api/')
 
-    res = None
-    try:
-        res = wsgi.get(url)
-    except AppError as e:
-        assert False, 'liveliness check fails on {}'.format(e)
-    res_dict = res.json
-    assert res.status_code == 200
-    assert res_dict == {}
+    res = wsgi.get(url)
+    assert res.status_code != 404
 
 
 def test_liveliness_probes(app, wsgi):
-    setup_environment(app.test_cli_runner())
-    url = url_for('oarepo-heartbeat.readiness', _external=True) \
-        .replace('http', 'https')
+    url = url_for('oarepo-heartbeat.readiness', _external=True)
+    assert url.startswith('http://localhost/api/')
 
-    res = None
-    try:
-        res = wsgi.get(url)
-    except AppError as e:
-        assert False, 'readiness check fails on {}'.format(e)
-    res_dict = res.json
-    assert res.status_code == 200
-    assert res_dict == {}
+    res = wsgi.get(url)
+    assert res.status_code != 404
 
 
-def test_generic_api(client):
-    pass
+def test_generic_api(wsgi):
+    url = url_for('invenio_records_rest.recid_list', _external=True)
+    assert url.startswith('http://localhost/api/')
+
+    res = wsgi.get(url)
+    assert res.status_code != 404

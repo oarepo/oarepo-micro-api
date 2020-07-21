@@ -19,12 +19,14 @@ from oarepo_micro_api.wsgi import application
 @pytest.fixture(scope='module')
 def app_config(app_config):
     """Get app config."""
+    app_config['SERVER_NAME'] = 'localhost'
+    app_config['PREFERRED_URL_SCHEME'] = 'http'
     app_config['FLASK_ENV'] = 'development'
     return app_config
 
 
 @pytest.fixture(scope='module')
-def wsgi():
+def wsgi(app):
     """Create test app."""
     app = TestApp(application)
     return app

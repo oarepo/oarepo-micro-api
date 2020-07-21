@@ -6,10 +6,7 @@
 # OARepo Micro API is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-
-pipenv check && \
-pipenv run pydocstyle oarepo_micro_api tests docs && \
-pipenv run isort -rc -c -df && \
-pipenv run check-manifest --ignore ".travis-*,docs/_build*" && \
-pipenv run sphinx-build -qnNW docs docs/_build/html && \
-pipenv run test
+pydocstyle oarepo_micro_api tests && \
+isort -rc -c -df && \
+check-manifest --ignore ".travis-*" && \
+python setup.py test

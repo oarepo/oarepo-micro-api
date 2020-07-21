@@ -15,6 +15,26 @@ readme = open('README.md').read()
 
 packages = find_packages()
 
+DATABASE = "postgresql"
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.2.1')
+
+install_requires = [
+    'uwsgi>=2.0',
+    'uwsgi-tools>=1.1.1',
+    'uwsgitop>=0.11',
+    'oarepo_heartbeat>=1.0.0',
+    'invenio-app'
+]
+
+tests_require = [
+    'pytest>=4.6.3',
+    'webtest>=2.0.35'
+]
+
+setup_requires = [
+    'pytest-runner>=2.7',
+]
+
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join('oarepo_micro_api', 'version.py'), 'rt') as fp:
@@ -26,6 +46,9 @@ setup(
     version=version,
     description=__doc__,
     long_description=readme,
+    install_requires=install_requires,
+    setup_requires=setup_requires,
+    tests_require=tests_require,
     keywords='oarepo-micro-api Invenio',
     license='MIT',
     author='Miroslav Bauer @ CESNET',
