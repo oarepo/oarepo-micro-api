@@ -1,3 +1,0 @@
-[submodule "3rdparty/invenio-cesnet-proxyidp"]
-	path = 3rdparty/invenio-cesnet-proxyidp
-	url = git@github.com:CESNET/invenio-cesnet-proxyidp.git
