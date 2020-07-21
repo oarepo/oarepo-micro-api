@@ -68,3 +68,4 @@ target/
 
 # Local environment
 .env
+.direnv

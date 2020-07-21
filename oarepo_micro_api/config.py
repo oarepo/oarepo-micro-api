@@ -15,12 +15,12 @@ You overwrite and set instance-specific configuration by either:
 
 from __future__ import absolute_import, print_function
 
+import os
 # TODO: enable for iiif previews
 # from invenio_previewer.config import PREVIEWER_PREFERENCE as BASE_PREFERENCE
 from datetime import timedelta
 
 from invenio_app.config import APP_DEFAULT_SECURE_HEADERS
-from invenio_cesnet_proxyidp.remote import ProxyIDPAuthRemote
 
 
 def _(x):
@@ -50,7 +50,7 @@ APPLICATION_ROOT = '/api/'
 # Email configuration
 # ===================
 #: Email address for support.
-SUPPORT_EMAIL = "du-support@cesnet.cz"
+SUPPORT_EMAIL = "no-reply@oarepo.org"
 #: Disable email sending by default.
 MAIL_SUPPRESS_SEND = True
 
@@ -71,7 +71,6 @@ ACCOUNTS_USERINFO_HEADERS = True
 
 # Elasticsearch
 # =============
-import os
 
 ES_USER = os.getenv('OAREPO_ES_USER', None)
 ES_PASSWORD = os.getenv('OAREPO_ES_PASSWORD', None)
@@ -101,8 +100,8 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': timedelta(minutes=60),
     },
     'file-checks': {
-       'task': 'invenio_files_rest.tasks.schedule_checksum_verification',
-       'schedule': timedelta(hours=24),
+        'task': 'invenio_files_rest.tasks.schedule_checksum_verification',
+        'schedule': timedelta(hours=24),
     }
 }
 
@@ -111,11 +110,6 @@ CELERY_BEAT_SCHEDULE = {
 #: Database URI including user and password
 SQLALCHEMY_DATABASE_URI = \
     'postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@localhost/oarepo-micro-api'
-
-# JSONSchemas
-# ===========
-#: Hostname used in URLs for local JSONSchemas.
-JSONSCHEMAS_HOST = 'repozitar.cesnet.cz'
 
 # Flask configuration
 # ===================
@@ -134,10 +128,6 @@ SESSION_COOKIE_SECURE = True
 #: should be set to the correct host and it is strongly recommended to only
 #: route correct hosts to the application.
 APP_ALLOWED_HOSTS = [h for h in os.getenv('OAREPO_APP_ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')]
-
-# OAI-PMH
-# =======
-OAISERVER_ID_PREFIX = 'oai:repozitar.cesnet.cz:'
 
 # Previewers
 # ==========
@@ -165,19 +155,6 @@ APP_DEFAULT_SECURE_HEADERS['content_security_policy'] = {
 }
 
 REST_ENABLE_CORS = True
-
-PROXYIDP_CONFIG = dict(
-    base_url='https://login.cesnet.cz/oidc/',
-    consumer_key=os.getenv('PROXYIDP_CONSUMER_KEY', 'CHANGE_ME'),
-    consumer_secret=os.getenv('PROXYIDP_CONSUMER_SECRET', 'CHANGE_ME'),
-    scope=('openid', 'email', 'profile',)
-)
-
-OAUTHCLIENT_REMOTE_APPS = dict(
-    proxyidp=ProxyIDPAuthRemote().remote_app()
-)
-
-INVENIO_OAREPO_UI_LOGIN_URL = '/api/openid/login/proxyidp'
 
 USERPROFILES_EXTEND_SECURITY_FORMS = True
 SECURITY_SEND_REGISTER_EMAIL = False
