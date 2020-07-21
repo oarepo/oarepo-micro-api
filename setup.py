@@ -15,17 +15,63 @@ readme = open('README.md').read()
 
 packages = find_packages()
 
+DATABASE = "postgresql"
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.2.1')
+
+install_requires = [
+    'redis',
+    'uwsgi>=2.0',
+    'uwsgi-tools>=1.1.1',
+    'uwsgitop>=0.11',
+    'oarepo-heartbeat>=1.0.0',
+    'invenio-app',
+    'invenio-search'
+]
+
+tests_require = [
+    'pytest>=4.6.3',
+    'webtest>=2.0.35',
+    'pydocstyle>=5.0.2',
+    'isort',
+    'check-manifest',
+    'pytest-coverage',
+    'pytest-pep8',
+    'pytest-flask>=0.15.1',
+    'pytest-invenio'
+]
+
+setup_requires = [
+    'pytest-runner>=2.7',
+]
+
+extras_require = {
+    'tests': [
+        *tests_require,
+        'oarepo[tests]~={version}'.format(
+            version=OAREPO_VERSION)
+    ],
+    'tests-es7': [
+        *tests_require,
+        'oarepo[tests-es7]~={version}'.format(
+            version=OAREPO_VERSION)
+    ]
+}
+
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join('oarepo_micro_api', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
-    version = g['__version__']
+version = g['__version__']
 
 setup(
     name='oarepo-micro-api',
     version=version,
     description=__doc__,
     long_description=readme,
+    install_requires=install_requires,
+    setup_requires=setup_requires,
+    tests_require=tests_require,
+    extras_require=extras_require,
     keywords='oarepo-micro-api Invenio',
     license='MIT',
     author='Miroslav Bauer @ CESNET',
@@ -36,27 +82,8 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
-        'console_scripts': [
-            'oarepo = invenio_app.cli:cli',
-        ],
-        "invenio_base.api_apps": [
-            "oarepo_micro_api = oarepo_micro_api.records.ext:OARepoMicroAPI",
-        ],
-        "flask.commands": [
-            "demo = oarepo_micro_api.cli:demo",
-            "setup = oarepo_micro_api.cli:setup",
-        ],
         'invenio_config.module': [
             'oarepo_micro_api = oarepo_micro_api.config',
-        ],
-        'invenio_i18n.translations': [
-            'messages = oarepo_micro_api',
-        ],
-        'invenio_jsonschemas.schemas': [
-            'records = oarepo_micro_api.records.jsonschemas'
-        ],
-        'invenio_search.mappings': [
-            'records = oarepo_micro_api.records.mappings',
         ],
     },
     classifiers=[

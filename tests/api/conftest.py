@@ -9,25 +9,28 @@
 
 from __future__ import absolute_import, print_function
 
-import tempfile
-
 import pytest
+import oarepo_micro_api  # import for coverage
 from invenio_app.factory import create_api
-from invenio_files_rest.models import Location
-from invenio_records_rest.utils import allow_all
+from webtest import TestApp
+
+from oarepo_micro_api.wsgi import application
 
 
 @pytest.fixture(scope='module')
 def app_config(app_config):
     """Get app config."""
-    app_config['RECORDS_FILES_REST_ENDPOINTS'] = {
-        'RECORDS_REST_ENDPOINTS': {
-            'recid': '/files'
-        }
-    }
-    app_config['FILES_REST_PERMISSION_FACTORY'] = allow_all
-    app_config['CELERY_ALWAYS_EAGER'] = True
+    app_config['SERVER_NAME'] = 'localhost'
+    app_config['PREFERRED_URL_SCHEME'] = 'http'
+    app_config['FLASK_ENV'] = 'development'
     return app_config
+
+
+@pytest.fixture(scope='module')
+def wsgi(app):
+    """Create test app."""
+    app = TestApp(application)
+    return app
 
 
 @pytest.fixture(scope='module')

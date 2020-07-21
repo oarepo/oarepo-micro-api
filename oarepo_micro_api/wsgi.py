@@ -1,20 +1,27 @@
-from invenio_app.factory import create_api
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2020 CESNET.
+#
+# OARepo Micro API is free software; you can redistribute it and/or modify it
+# under the terms of the MIT License; see LICENSE file for more details.
 
+"""WSGI application for OARepo Micro API."""
+from invenio_app.factory import create_api
 # APPLICATION_ROOT='/api' has to be set for this to work !
-from oarepo_heartbeat.views import readiness, liveliness
+from oarepo_heartbeat.views import liveliness, readiness
 
 print('Application loading ...')
 
 
 class PrefixMiddleware(object):
-    """
-    Prefixing WSGI middleware
-    """
+    """/api prefixing WSGI middleware."""
 
     def __init__(self, app):
+        """Initialize prefixing middleware."""
         self.app = app
 
     def __call__(self, environ, start_response):
+        """Sets /api prefix on the request path."""
         path_info = environ['PATH_INFO']
         script = ''
         if path_info.startswith('/api'):
@@ -27,14 +34,14 @@ class PrefixMiddleware(object):
 
 
 class HeartbeatMiddleware:
-    """
-    HeartBeat probes WSGI middleware
-    """
+    """HeartBeat endpoints WSGI middleware."""
 
     def __init__(self, app):
+        """Initialize heartbeat middleware."""
         self.app = app
 
     def __call__(self, environ, start_response):
+        """Handle .well-known endpoints outside of /api prefix."""
         rsp = None
         with application.app_context():
             pi = environ.get('PATH_INFO', '')
