@@ -40,6 +40,10 @@ setup_requires = [
     'pytest-runner>=2.7',
 ]
 
+extras_require = {
+    'tests': [*tests_require],
+}
+
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join('oarepo_micro_api', 'version.py'), 'rt') as fp:
@@ -54,6 +58,7 @@ setup(
     install_requires=install_requires,
     setup_requires=setup_requires,
     tests_require=tests_require,
+    extras_require=extras_require,
     keywords='oarepo-micro-api Invenio',
     license='MIT',
     author='Miroslav Bauer @ CESNET',
