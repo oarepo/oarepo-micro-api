@@ -45,47 +45,56 @@ setup_requires = [
 ]
 
 extras_require = {
-    'tests': [*tests_require],
+    'tests': [
+        *tests_require,
+        'oarepo[tests]~={version}'.format(
+            version=OAREPO_VERSION)
+    ],
+    'tests-es7': [
+        *tests_require,
+        'oarepo[tests-es7]~={version}'.format(
+            version=OAREPO_VERSION)
+    ]
 }
 
 # Get the version string. Cannot be done with import!
 g = {}
 with open(os.path.join('oarepo_micro_api', 'version.py'), 'rt') as fp:
     exec(fp.read(), g)
-    version = g['__version__']
+version = g['__version__']
 
 setup(
-    name='oarepo-micro-api',
-    version=version,
-    description=__doc__,
-    long_description=readme,
-    install_requires=install_requires,
-    setup_requires=setup_requires,
-    tests_require=tests_require,
-    extras_require=extras_require,
-    keywords='oarepo-micro-api Invenio',
-    license='MIT',
-    author='Miroslav Bauer @ CESNET',
-    author_email='bauer@cesnet.cz',
-    url='https://github.com/oarepo/oarepo-micro-api',
-    packages=packages,
-    zip_safe=False,
-    include_package_data=True,
-    platforms='any',
-    entry_points={
-        'invenio_config.module': [
-            'oarepo_micro_api = oarepo_micro_api.config',
-        ],
-    },
-    classifiers=[
-        'Environment :: Web Environment',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Development Status :: 3 - Alpha',
-    ],
+name = 'oarepo-micro-api',
+version = version,
+description = __doc__,
+long_description = readme,
+install_requires = install_requires,
+setup_requires = setup_requires,
+tests_require = tests_require,
+extras_require = extras_require,
+keywords = 'oarepo-micro-api Invenio',
+license = 'MIT',
+author = 'Miroslav Bauer @ CESNET',
+author_email = 'bauer@cesnet.cz',
+url = 'https://github.com/oarepo/oarepo-micro-api',
+packages = packages,
+zip_safe = False,
+include_package_data = True,
+platforms = 'any',
+entry_points = {
+                   'invenio_config.module': [
+                       'oarepo_micro_api = oarepo_micro_api.config',
+                   ],
+               },
+classifiers = [
+                  'Environment :: Web Environment',
+                  'Intended Audience :: Developers',
+                  'License :: OSI Approved :: MIT License',
+                  'Operating System :: OS Independent',
+                  'Programming Language :: Python',
+                  'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+                  'Programming Language :: Python :: 3',
+                  'Programming Language :: Python :: 3.6',
+                  'Development Status :: 3 - Alpha',
+              ],
 )
