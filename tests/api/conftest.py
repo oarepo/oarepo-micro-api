@@ -10,6 +10,7 @@
 from __future__ import absolute_import, print_function
 
 import pytest
+import oarepo_micro_api  # import for coverage
 from invenio_app.factory import create_api
 from webtest import TestApp
 

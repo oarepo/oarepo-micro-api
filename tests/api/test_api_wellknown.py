@@ -28,7 +28,7 @@ def test_environ(wsgi):
     url = '/.well-known/heartbeat/environ'
 
     res = wsgi.get(url)
-    assert res.status_code == 200
+    assert res.status_code != 404
 
 
 def test_generic_api(wsgi):
