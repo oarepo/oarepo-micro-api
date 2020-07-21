@@ -23,7 +23,7 @@ install_requires = [
     'uwsgi>=2.0',
     'uwsgi-tools>=1.1.1',
     'uwsgitop>=0.11',
-    'oarepo_heartbeat>=1.0.0',
+    'oarepo-heartbeat>=1.0.0',
     'invenio-app',
     'invenio-search'
 ]
