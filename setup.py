@@ -19,6 +19,7 @@ DATABASE = "postgresql"
 OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.2.1')
 
 install_requires = [
+    'redis',
     'uwsgi>=2.0',
     'uwsgi-tools>=1.1.1',
     'uwsgitop>=0.11',
