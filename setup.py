@@ -28,7 +28,8 @@ install_requires = [
 
 tests_require = [
     'pytest>=4.6.3',
-    'webtest>=2.0.35'
+    'webtest>=2.0.35',
+    'pydocstyle>=5.0.2'
 ]
 
 setup_requires = [
