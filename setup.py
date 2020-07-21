@@ -34,7 +34,8 @@ tests_require = [
     'isort',
     'check-manifest',
     'pytest-coverage',
-    'pytest-pep8'
+    'pytest-pep8',
+    'pytest-flask>=0.15.1'
 ]
 
 setup_requires = [
