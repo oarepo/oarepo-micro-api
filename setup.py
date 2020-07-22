@@ -68,6 +68,7 @@ setup(
     version=version,
     description=__doc__,
     long_description=readme,
+    long_description_content_type='text/markdown',
     install_requires=install_requires,
     setup_requires=setup_requires,
     tests_require=tests_require,
