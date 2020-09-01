@@ -22,9 +22,9 @@ language: python
 
 matrix:
   fast_finish: true
-#
-#cache:
-#  - pip
+
+cache:
+  - pip
 
 env:
   global:
@@ -47,7 +47,7 @@ before_install:
   - sleep 10
 
 install:
-  - "travis_retry pip install --upgrade --force-reinstall -e .[$EXTRAS]"
+  - "travis_retry pip install --upgrade --upgrade-strategy eager --force-reinstall -e .[$EXTRAS]"
 
 script:
   - ./run-tests.sh
