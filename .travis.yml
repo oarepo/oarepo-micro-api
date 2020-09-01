@@ -47,7 +47,7 @@ before_install:
   - sleep 10
 
 install:
-  - "travis_retry pip install -e .[$EXTRAS]"
+  - "travis_retry pip install --upgrade -e .[$EXTRAS]"
 
 script:
   - ./run-tests.sh
