@@ -47,9 +47,7 @@ before_install:
   - sleep 10
 
 install:
-  - "travis_retry pip install -e ."
-  - "travis_retry pip uninstall -y oarepo"
-  - "travis_retry pip install oarepo[tests-es7]"
+  - "travis_retry pip install -e .[tests]"
 
 script:
   - ./run-tests.sh
