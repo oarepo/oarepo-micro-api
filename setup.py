@@ -23,6 +23,7 @@ install_requires = [
 ]
 
 tests_require = [
+    'webtest'
 ]
 
 setup_requires = [
