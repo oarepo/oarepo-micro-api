@@ -33,7 +33,7 @@ def test_environ(wsgi):
 
 def test_generic_api(wsgi):
     url = url_for('invenio_records_rest.recid_list', _external=True)
-    assert url.startswith('http://localhost/api/')
+    assert url.startswith('http://localhost/api/records')
 
     res = wsgi.get(url)
     assert res.status_code != 404

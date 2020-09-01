@@ -16,28 +16,13 @@ readme = open('README.md').read()
 packages = find_packages()
 
 DATABASE = "postgresql"
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.2.1')
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.0')
 
 install_requires = [
-    'redis',
-    'uwsgi>=2.0',
-    'uwsgi-tools>=1.1.1',
-    'uwsgitop>=0.11',
-    'oarepo-heartbeat>=1.0.0',
-    'invenio-app',
-    'invenio-search'
+    'oarepo~={version}'.format(version=OAREPO_VERSION)
 ]
 
 tests_require = [
-    'pytest>=4.6.3',
-    'webtest>=2.0.35',
-    'pydocstyle>=5.0.2',
-    'isort',
-    'check-manifest',
-    'pytest-coverage',
-    'pytest-pep8',
-    'pytest-flask>=0.15.1',
-    'pytest-invenio'
 ]
 
 setup_requires = [
