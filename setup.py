@@ -19,7 +19,8 @@ DATABASE = "postgresql"
 OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.0')
 
 install_requires = [
-    'oarepo~={version}'.format(version=OAREPO_VERSION)
+    'oarepo~={version}'.format(version=OAREPO_VERSION),
+    'oarepo-heartbeat'
 ]
 
 tests_require = [
