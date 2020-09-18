@@ -26,6 +26,10 @@ matrix:
 cache:
   - pip
 
+branches:
+  except:
+    - /^test-.*$/
+
 env:
   global:
     - POSTGRESQL_SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://postgres@localhost:5432/invenio"
