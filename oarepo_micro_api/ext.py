@@ -5,9 +5,14 @@
 # OARepo Micro API is free software; you can redistribute it and/or modify it
 # under the terms of the MIT License; see LICENSE file for more details.
 
-"""Signal handlers for Micro API."""
+"""OARepo Micro API extension."""
 from flask import jsonify
 from invenio_base.signals import app_loaded
+
+
+class OARepoMicroAPI:
+    def __init__(self, app, **kwargs):
+        app.extensions['oarepo-micro-api'] = self
 
 
 @app_loaded.connect

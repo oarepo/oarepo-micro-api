@@ -68,6 +68,12 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'invenio_base.apps': [
+            'oarepo_micro_api = oarepo_micro_api.ext.OARepoMicroAPI'
+        ],
+        'invenio_base.api_apps': [
+            'oarepo_micro_api = oarepo_micro_api.ext.OARepoMicroAPI'
+        ],
         'invenio_config.module': [
             'oarepo_micro_api = oarepo_micro_api.config',
         ],
