@@ -78,9 +78,10 @@ jobs:
 
       - name: Install
         run: |
+          # pip install --force-reinstall -e .[tests]
           pip install -e .
           pip uninstall -y oarepo
-          pip install --force-reinstall -e .[tests]
+          pip install oarepo[tests]
 
       - name: Run-tests
         run: |
