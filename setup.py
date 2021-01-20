@@ -16,7 +16,7 @@ readme = open('README.md').read()
 packages = find_packages()
 
 DATABASE = "postgresql"
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.0')
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.40')
 
 install_requires = [
     'oarepo~={version}'.format(version=OAREPO_VERSION),
@@ -32,6 +32,7 @@ tests_require = [
 
 setup_requires = [
     'pytest-runner>=2.7',
+    'pytest-celery',
 ]
 
 extras_require = {

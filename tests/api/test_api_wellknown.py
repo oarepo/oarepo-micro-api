@@ -37,3 +37,6 @@ def test_generic_api(wsgi):
 
     res = wsgi.get(url)
     assert res.status_code != 404
+
+    assert 'Cache-Control' in res.headers
+    assert res.headers['Cache-Control'] == 'no-cache'
