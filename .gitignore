@@ -69,3 +69,4 @@ target/
 # Local environment
 .env
 .direnv
+.venv

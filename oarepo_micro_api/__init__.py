@@ -9,6 +9,8 @@
 
 from __future__ import absolute_import, print_function
 
+from .signals import set_no_cache_header
 from .version import __version__
+from .wsgi import HeartbeatMiddleware, PrefixMiddleware
 
-__all__ = ('__version__', )
+__all__ = ('__version__', 'set_no_cache_header', 'PrefixMiddleware', 'HeartbeatMiddleware')
