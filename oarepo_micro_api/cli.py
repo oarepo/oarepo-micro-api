@@ -18,6 +18,7 @@ from __future__ import absolute_import, print_function
 from functools import wraps
 
 from invenio_app.factory import create_api
+from invenio_base import create_cli
 
 
 def with_api(f):
@@ -28,3 +29,7 @@ def with_api(f):
             return f(*args, **kwargs)
 
     return inner
+
+
+#: Invenio CLI application.
+cli = create_cli(create_app=create_api)

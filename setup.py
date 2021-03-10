@@ -69,6 +69,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'console_scripts': [
+            'oarepo = oarepo_micro_api.cli:cli'
+        ],
         'invenio_config.module': [
             'oarepo_micro_api = oarepo_micro_api.config',
         ],
