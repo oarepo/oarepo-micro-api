@@ -34,6 +34,8 @@ def _(x):
 RATELIMIT_STORAGE_URL = 'redis://localhost:6379/3'
 RATELIMIT_ENABLED = True
 
+INDEXER_RECORD_TO_INDEX = 'oarepo_micro_api.utils.record_to_index_from_index_name'
+
 # I18N
 # ====
 #: Default language

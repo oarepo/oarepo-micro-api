@@ -16,7 +16,7 @@ readme = open('README.md').read()
 packages = find_packages()
 
 DATABASE = "postgresql"
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.40')
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.59')
 
 install_requires = [
     'oarepo~={version}'.format(version=OAREPO_VERSION),
@@ -70,6 +70,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'console_scripts': [
+            'oarepo = oarepo_micro_api.cli:cli'
+        ],
         'invenio_config.module': [
             'oarepo_micro_api = oarepo_micro_api.config',
         ],
