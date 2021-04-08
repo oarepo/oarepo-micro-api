@@ -23,7 +23,8 @@ install_requires = [
     'oarepo-heartbeat',
     'uwsgi>=2.0',
     'uwsgi-tools>=1.1.1',
-    'uwsgitop>=0.11'
+    'uwsgitop>=0.11',
+    'wrapt>=1.12.1,<2.0.0'
 ]
 
 tests_require = [
