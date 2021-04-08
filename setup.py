@@ -16,14 +16,15 @@ readme = open('README.md').read()
 packages = find_packages()
 
 DATABASE = "postgresql"
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.59')
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.60')
 
 install_requires = [
     'oarepo~={version}'.format(version=OAREPO_VERSION),
     'oarepo-heartbeat',
     'uwsgi>=2.0',
     'uwsgi-tools>=1.1.1',
-    'uwsgitop>=0.11'
+    'uwsgitop>=0.11',
+    'wrapt>=1.12.1,<2.0.0'
 ]
 
 tests_require = [
