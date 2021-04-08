@@ -5,7 +5,13 @@ from wrapt import ObjectProxy
 
 
 class IndicesProxy(ObjectProxy):
+    """
+    Proxy that helps create mapping with replaced {PREFIX} placeholder
+    """
     def create(self, index=None, body=None, **kwargs):
+        """
+        Replace {PREFIX} placeholder in alias section in mapping
+        """
         if 'aliases' in body:
             prefix = current_app.config.get('SEARCH_INDEX_PREFIX', '')
             body['aliases'] = {
@@ -15,6 +21,9 @@ class IndicesProxy(ObjectProxy):
 
 
 class ElasticsearchProxy(ObjectProxy):
+    """
+    Proxy that helps create mapping with replaced {PREFIX} placeholder
+    """
     def __init__(self, wrapped):
         super().__init__(wrapped)
         self.__wrapped_indices__ = None
@@ -28,6 +37,9 @@ class ElasticsearchProxy(ObjectProxy):
 
 @app_loaded.connect
 def patch_invenio(sender, *args, app=None, **kwargs):
+    """
+    Insert custom search client into invenio-search
+    """
     with app.app_context():
         client = current_search.client
         if not isinstance(client, ElasticsearchProxy):
