@@ -162,3 +162,5 @@ USERPROFILES_EXTEND_SECURITY_FORMS = True
 SECURITY_SEND_REGISTER_EMAIL = False
 # Disable account confirmation requirement
 SECURITY_CONFIRMABLE = False
+
+from . import alias_prefix_replacer  # noqa to register app loaded event
