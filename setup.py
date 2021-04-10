@@ -16,7 +16,7 @@ readme = open('README.md').read()
 packages = find_packages()
 
 DATABASE = "postgresql"
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.60')
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.61')
 
 install_requires = [
     'oarepo~={version}'.format(version=OAREPO_VERSION),
