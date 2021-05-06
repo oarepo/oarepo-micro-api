@@ -11,7 +11,6 @@ from urllib.parse import urlparse
 from flask import request
 from invenio_indexer.utils import default_record_to_index
 
-
 API_ROUTES = [
     '/oauth'
 ]
@@ -21,9 +20,10 @@ def is_api_request():
     """Determines whether a request is to be served by micro API."""
     # TODO: update OARepo Whitenoise to use this
     path = urlparse(request.url).path
-
+    print(request)
     if not any([path.startswith(r) for r in API_ROUTES]):
-        accept = request.headers.get('Accept')
+        accept = request.headers.get('Accept', '')
+        print(accept)
         if 'html' in accept and 'download' not in request.args:
             return False
 
