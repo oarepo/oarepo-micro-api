@@ -110,8 +110,8 @@ CELERY_BEAT_SCHEDULE = {
 # Database
 # ========
 #: Database URI including user and password
-SQLALCHEMY_DATABASE_URI = \
-    'postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@localhost/oarepo-micro-api'
+# SQLALCHEMY_DATABASE_URI = \
+#     'postgresql+psycopg2://oarepo-micro-api:oarepo-micro-api@localhost/oarepo-micro-api'
 
 # Flask configuration
 # ===================

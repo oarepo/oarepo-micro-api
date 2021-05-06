@@ -7,17 +7,15 @@
 
 """OArepo Micro API Signal handlers."""
 
-from urllib.parse import urlparse
+from flask import request_finished
 
-from flask import request, request_finished
+from oarepo_micro_api.utils import is_api_request
 
 
 @request_finished.connect
 def set_no_cache_header(sender, response, **extra):
     """Sets no-cache header on all API responses."""
-    print(request)
-    path = urlparse(request.url).path
-    if path.startswith('/api'):
+    if is_api_request():
         # The response may be stored by any cache, even if the response is
         # normally non-cacheable. However, the stored response MUST always
         # go through validation with the origin server first before using it.
