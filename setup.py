@@ -28,7 +28,8 @@ install_requires = [
 ]
 
 tests_require = [
-    'webtest'
+    'webtest',
+    'pytest-pycodestyle'
 ]
 
 setup_requires = [
