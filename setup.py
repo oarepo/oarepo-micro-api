@@ -29,7 +29,8 @@ install_requires = [
 
 tests_require = [
     'webtest',
-    'pytest-pycodestyle'
+    'pytest-pycodestyle',
+    'pipdeptree'
 ]
 
 setup_requires = [
