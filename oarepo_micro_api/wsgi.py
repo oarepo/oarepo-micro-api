@@ -20,17 +20,17 @@ class PrefixMiddleware(object):
         """Initialize prefixing middleware."""
         self.app = app
 
-    def __call__(self, environ, start_response):
+    def __call__(self, envir, start_response):
         """Sets /api prefix on the request path."""
-        path_info = environ['PATH_INFO']
+        path_info = envir['PATH_INFO']
         script = ''
         if path_info.startswith('/api'):
             script = '/api'
             path_info = path_info[4:]
-        original_script_name = environ.get("SCRIPT_NAME", "")
-        environ["SCRIPT_NAME"] = original_script_name + script
-        environ["PATH_INFO"] = path_info
-        return self.app(environ, start_response)
+        original_script_name = envir.get("SCRIPT_NAME", "")
+        envir["SCRIPT_NAME"] = original_script_name + script
+        envir["PATH_INFO"] = path_info
+        return self.app(envir, start_response)
 
 
 class HeartbeatMiddleware:
@@ -40,11 +40,11 @@ class HeartbeatMiddleware:
         """Initialize heartbeat middleware."""
         self.app = app
 
-    def __call__(self, environ, start_response):
+    def __call__(self, envir, start_response):
         """Handle .well-known endpoints outside of /api prefix."""
         rsp = None
         with application.app_context():
-            pi = environ.get('PATH_INFO', '')
+            pi = envir.get('PATH_INFO', '')
             if pi == '/.well-known/heartbeat/readiness':
                 rsp = readiness()
             elif pi == '/.well-known/heartbeat/liveliness':
@@ -52,9 +52,9 @@ class HeartbeatMiddleware:
             elif pi == '/.well-known/heartbeat/environ':
                 rsp = environ()
             if rsp:
-                return rsp(environ, start_response)
+                return rsp(envir, start_response)
             else:
-                return self.app(environ, start_response)
+                return self.app(envir, start_response)
 
 
 application = create_api()
