@@ -8,7 +8,7 @@
 """WSGI application for OARepo Micro API."""
 from invenio_app.factory import create_api
 # APPLICATION_ROOT='/api' has to be set for this to work !
-from oarepo_heartbeat.views import liveliness, readiness
+from oarepo_heartbeat.views import liveliness, readiness, environ
 
 print('Application loading ...')
 
@@ -49,6 +49,8 @@ class HeartbeatMiddleware:
                 rsp = readiness()
             elif pi == '/.well-known/heartbeat/liveliness':
                 rsp = liveliness()
+            elif pi == '/.well-known/heartbeat/environ':
+                rsp = environ()
             if rsp:
                 return rsp(environ, start_response)
             else:
