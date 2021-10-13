@@ -8,7 +8,7 @@
 """WSGI application for OARepo Micro API."""
 from invenio_app.factory import create_api
 # APPLICATION_ROOT='/api' has to be set for this to work !
-from oarepo_heartbeat.views import liveliness, readiness, environ
+from oarepo_heartbeat.views import environ, liveliness, readiness
 
 print('Application loading ...')
 
