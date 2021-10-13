@@ -10,3 +10,6 @@ Changes
 
 Version 3.3.106
  - after fixed oarepo-heartbeat/pycodestyle/isort ...
+
+Version 3.3.107
+ - importlib_metadata added to reqs.
