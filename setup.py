@@ -21,6 +21,7 @@ OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.103')
 install_requires = [
     'oarepo~={version}'.format(version=OAREPO_VERSION),
     'oarepo-heartbeat>=1.0.2',
+    'importlib_metadata',
     'uwsgi>=2.0',
     'uwsgi-tools>=1.1.1',
     'uwsgitop>=0.11',
