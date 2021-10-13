@@ -7,3 +7,6 @@
 
 Changes
 =======
+
+Version 3.3.106
+ - after fixed oarepo-heartbeat/pycodestyle/isort ...
