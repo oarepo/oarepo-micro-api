@@ -9,15 +9,15 @@ name: Oarepo-micro-api build script ported from travis
 
 on:
   push:
-    branches: [ 'invenio-3.3' ]
+    branches: [ 'invenio-3.5' ]
     tags: [ '*' ]
   pull_request:
-    branches: [ 'invenio-3.3' ]
+    branches: [ 'invenio-3.5' ]
 
 jobs:
   build:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     services:
       postgres:
         image: postgres:9.6
@@ -28,7 +28,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     strategy:
       matrix:
-        python-version: [ 3.8 ]
+        python-version: [ 3.10.0 ]
     env:
       ES_HOST: 127.0.0.1
       SQLALCHEMY_DATABASE_URI: 'postgresql+psycopg2://postgres:postgres@localhost:5432/invenio'
@@ -67,7 +67,7 @@ jobs:
       - name: Runs Elasticsearch
         uses: elastic/elastic-github-actions/elasticsearch@master
         with:
-          stack-version: 7.6.0
+          stack-version: 7.15.2
 
       - name: Before_install
         run: |
