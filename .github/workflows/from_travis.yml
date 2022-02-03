@@ -9,10 +9,10 @@ name: Oarepo-micro-api build script ported from travis
 
 on:
   push:
-    branches: [ master, main, 'invenio-*' ]
+    branches: [ 'invenio-3.3' ]
     tags: [ '*' ]
   pull_request:
-    branches: [ master, main, 'invenio-*' ]
+    branches: [ 'invenio-3.3' ]
 
 jobs:
   build:
@@ -46,16 +46,16 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          # This path is specific to Ubuntu
-          path: ~/.cache/pip
-          # Look to see if there is a cache hit for the corresponding requirements file
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-            ${{ runner.os }}-
+#      - name: Cache pip
+#        uses: actions/cache@v2
+#        with:
+#          # This path is specific to Ubuntu
+#          path: ~/.cache/pip
+#          # Look to see if there is a cache hit for the corresponding requirements file
+#          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pip-
+#            ${{ runner.os }}-
 
       - name: Configure sysctl limits
         run: |
@@ -71,16 +71,14 @@ jobs:
 
       - name: Before_install
         run: |
-          pip install --upgrade pip setuptools py
+          pip install --upgrade pip 'setuptools<58.0.0' py
           pip install twine wheel pydocstyle>=5.0.2 isort requirements-builder pip-tools
           PGPASSWORD=postgres psql -c 'CREATE DATABASE invenio;' -U postgres -h localhost
 
       - name: Install
         run: |
-          # pip install --force-reinstall -e .[tests]
-          pip install -e .
-          pip uninstall -y oarepo
-          pip install oarepo[tests]
+          ./scripts/check_pypi.sh
+          pip install --force-reinstall -e .[tests]
 
       - name: Run-tests
         run: |

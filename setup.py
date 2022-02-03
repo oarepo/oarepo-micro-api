@@ -16,18 +16,22 @@ readme = open('README.md').read()
 packages = find_packages()
 
 DATABASE = "postgresql"
-OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.40')
+OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '3.3.123')
 
 install_requires = [
     'oarepo~={version}'.format(version=OAREPO_VERSION),
-    'oarepo-heartbeat',
+    'oarepo-heartbeat>=1.0.2',
+    'importlib_metadata',
     'uwsgi>=2.0',
     'uwsgi-tools>=1.1.1',
-    'uwsgitop>=0.11'
+    'uwsgitop>=0.11',
+    'wrapt>=1.12.1,<2.0.0'
 ]
 
 tests_require = [
-    'webtest'
+    'webtest',
+    'pytest-pycodestyle',
+    'pipdeptree'
 ]
 
 setup_requires = [
@@ -69,6 +73,9 @@ setup(
     include_package_data=True,
     platforms='any',
     entry_points={
+        'console_scripts': [
+            'oarepo = oarepo_micro_api.cli:cli'
+        ],
         'invenio_config.module': [
             'oarepo_micro_api = oarepo_micro_api.config',
         ],
