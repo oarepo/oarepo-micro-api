@@ -78,10 +78,7 @@ jobs:
       - name: Install
         run: |
           ./scripts/check_pypi.sh
-          # pip install --force-reinstall -e .[tests]
-          pip install -e .
-          pip uninstall -y oarepo
-          pip install oarepo[tests]
+          pip install --force-reinstall -e .[tests]
 
       - name: Run-tests
         run: |
