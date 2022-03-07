@@ -17,3 +17,6 @@ Version 3.3.107
 Version 3.3.128
  - GHaction install process fixed
 
+Version 3.3.138
+ - check_pypi script fixed
+
