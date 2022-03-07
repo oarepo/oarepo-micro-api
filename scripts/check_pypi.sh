@@ -30,7 +30,7 @@ if [[ "$OAREPO_VER" =~ ^([0-9]+\.){2}[0-9]+$ ]]; then
   else
     echo "OK: ${PKG}-${OAREPO_VER}"
   fi
-  echo "$(date '+%y%m%d-%H%M%S') check_pypi: Done.
+  echo "$(date '+%y%m%d-%H%M%S') check_pypi: Done."
 else
   echo "ERR: version string format check failed ($OAREPO_VER)"
   exit 1
