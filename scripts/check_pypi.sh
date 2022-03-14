@@ -15,14 +15,14 @@ SLEEP=10
 PKG="oarepo"
 OAREPO_VER=$(sed -n "/^OAREPO_VERSION/ { s/^OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '\([0-9\.a-z]\+\)')/\1/; p; }" "${SETUP_PY}")
 
-echo "$PKG-ver: $OAREPO_VER"
+echo "$(date '+%y%m%d-%H%M%S') check_pypi: $PKG-ver=$OAREPO_VER"
 
 if [[ "$OAREPO_VER" =~ ^([0-9]+\.){2}[0-9]+$ ]]; then
   I=0
   while [[ $((++I)) -le $MAXI ]]; do echo -n '.'
-    curl -s -f "https://pypi.org/project/${PKG}/${OAREPO_VER}/" >/dev/null && break
-    echo "${PKG}-${OAREPO_VER} not available - sleep for a while ..."
     sleep $SLEEP
+    curl -s -f "https://pypi.org/project/${PKG}/${OAREPO_VER}/" >/dev/null && break
+    echo "${PKG}-${OAREPO_VER} not available (attempt $I of $MAXI)"
   done
   if [[ $I -gt $MAXI ]]; then
     echo "max retries exceeded ($MAXI)"
@@ -30,6 +30,7 @@ if [[ "$OAREPO_VER" =~ ^([0-9]+\.){2}[0-9]+$ ]]; then
   else
     echo "OK: ${PKG}-${OAREPO_VER}"
   fi
+  echo "$(date '+%y%m%d-%H%M%S') check_pypi: Done."
 else
   echo "ERR: version string format check failed ($OAREPO_VER)"
   exit 1
