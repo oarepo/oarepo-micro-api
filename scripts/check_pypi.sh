@@ -11,7 +11,7 @@ set -e
 SETUP_PY='./setup.py'
 
 MAXI=4
-SLEEP=10
+SLEEP=20
 PKG="oarepo"
 OAREPO_VER=$(sed -n "/^OAREPO_VERSION/ { s/^OAREPO_VERSION = os.environ.get('OAREPO_VERSION', '\([0-9\.a-z]\+\)')/\1/; p; }" "${SETUP_PY}")
 
